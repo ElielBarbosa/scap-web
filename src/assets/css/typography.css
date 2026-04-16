@@ -1,0 +1,121 @@
+
+:root{
+    --font: 'Red Hat Display', sans-serif;
+}
+
+body{
+    font-family: var(--font);
+    font-weight: 400;
+    font-family: var(--font);
+}
+
+p{
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--gray-5);
+}
+
+h1,h2,h3,h4,h5,h6{
+    color: var(--black-dark);
+}
+
+h1{
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 40px;
+}
+h2{
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 40px;
+}
+h3{
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 40px;
+}
+h4{
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+}
+h5{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 40px;
+}
+h6{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 40px;
+}
+
+
+@media (max-width: 920px) {
+
+h1{
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 72pt;
+}
+h2{
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 48px;
+}
+h3{
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 40px;
+}
+h4{
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 24px;
+}
+h5{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+}
+h6{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+}
+}
+.bold{
+    font-weight: 800;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.title-gradient{
+    font-family: var(--font);
+    font-weight: 700;
+    font-size: 32px;
+    background-image: var(--gradient-1);
+    /* 2. Recorta o background para ficar apenas atrás do texto */
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* 3. Torna a cor do texto original transparente */
+    -webkit-text-fill-color: transparent;
+    /* Opcional: Garante que o gradiente preencha corretamente */
+    display: inline-block;
+}
+
+.subtitle-gradient{
+    font-family: var(--font);
+    font-weight: 700;
+    font-size: 24px;
+    background-image: var(--gradient-1);
+    /* 2. Recorta o background para ficar apenas atrás do texto */
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* 3. Torna a cor do texto original transparente */
+    -webkit-text-fill-color: transparent;
+    /* Opcional: Garante que o gradiente preencha corretamente */
+    display: inline-block;
+}

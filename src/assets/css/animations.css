@@ -1,0 +1,12 @@
+@keyframes intro {
+    0%{
+        overflow: hidden;
+        opacity: 0;
+        transform: translateX(1 0px);
+    }
+    100%{
+        overflow: hidden;
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
