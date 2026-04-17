@@ -1,7 +1,13 @@
 import "./App.css";
 
+import WellcomePage from "./pages/Wellcome/WellcomePage";
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <WellcomePage />
+    </>
+  );
 }
 
 export default App;

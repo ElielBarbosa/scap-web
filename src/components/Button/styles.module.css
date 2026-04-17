@@ -1,0 +1,34 @@
+.primary,
+.secondary {
+    color: var(--white-normal);
+    border-radius: 10px;
+    padding: 16px 32px;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: var(--font);
+    font-weight: 700;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-1);
+    transition: background-color 0.3s ease;
+}
+
+.primary {
+    background-color: var(--primary-normal);
+}
+
+.secondary {
+    background-color: var(--primary-dark-2);
+}
+
+.primary:hover {
+    background-color: var(--primary-dark);
+    transition: background-color 0.3s ease;
+}
+
+
+.secondary:hover {
+    background-color: var(--gray-6);
+    transition: background-color 0.3s ease;
+}
