@@ -29,7 +29,7 @@ function WellcomePage() {
               <Button variant="primary">Entrar</Button>
             </Link>
             <Divisor />
-            <Link to="/register">
+            <Link to="/signup">
               <Button variant="secondary">Criar nova conta</Button>
             </Link>
           </div>

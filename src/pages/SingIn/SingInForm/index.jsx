@@ -16,7 +16,6 @@ function SignInForm() {
 
   const email = useForm();
   const password = useForm();
-  console.log(password);
 
   const { handdleLogin } = useContext(UserContext);
 

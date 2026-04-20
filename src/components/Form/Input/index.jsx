@@ -1,4 +1,3 @@
-import ErrorForm from "../FormError/ErrorForm";
 import styles from "./styles.module.css";
 
 function Input({
@@ -9,7 +8,6 @@ function Input({
   placehoder,
   error,
   onChange,
-  onBlur,
   ...rest
 }) {
   return (
@@ -24,10 +22,8 @@ function Input({
           type={type}
           onChange={onChange}
           value={value}
-          onBlur={onBlur}
           {...rest}
         />
-        {console.log(error)}
       </div>
       {error && <span className={styles.errorSpan}>{error}</span>}
     </>
