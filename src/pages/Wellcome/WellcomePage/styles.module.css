@@ -20,12 +20,17 @@
 
 .logo {
     aspect-ratio: 1/1;
+    width: 58px;
 }
 
 .logoName {
     font-size: 4rem;
     font-weight: 700;
     font-family: Arial;
+}
+
+.a {
+    opacity: 0;
 }
 
 .wellcomeMessager {
@@ -40,6 +45,6 @@
     margin: 24px 0;
 }
 
-.wellcomeButtonContainer>button {
+.wellcomeButtonContainer>a>button {
     width: 100%;
 }

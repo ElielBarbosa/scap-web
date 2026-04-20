@@ -1,0 +1,63 @@
+.inputWrapper {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--white-light);
+    border-radius: 10px;
+    box-shadow: var(--shadow-1);
+    padding: 0 10px;
+    transition: outline 0.5s ease;
+    outline: 2px solid transparent;
+    position: relative;
+}
+
+
+.inputWrapper:focus-within {
+    color: var(--black-light);
+    transition: outline 0.5s ease;
+    outline: 2px solid var(--primary-normal);
+}
+
+.iconInput {
+    display: flex;
+    align-self: center;
+    width: 24px;
+    height: 24px;
+    border-right: 1px solid var(--gray-1);
+    padding-right: 8px;
+    box-sizing: content-box;
+    border-right: 1px solid var(--gray-1);
+}
+
+/* .label {
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+} */
+
+.input {
+    font-family: var(--font);
+    border: none;
+    padding: 16px 8px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    width: 100%;
+}
+
+
+
+.input:focus {
+    outline: none;
+}
+
+.inputWrapper.error {
+    outline: 2px solid var(--red-dark);
+    box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.244);
+}
+
+.errorSpan {
+    color: var(--red-normal);
+    font-size: 14px;
+    font-weight: 700;
+}

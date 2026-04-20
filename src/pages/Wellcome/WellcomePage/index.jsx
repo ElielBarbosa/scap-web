@@ -1,7 +1,9 @@
 import styles from "./styles.module.css";
-import logo from "../../../assets/images/logo-mobile.png";
-import Button from "../../../components/Button";
+import logo from "../../../assets/images/logo-mobile.svg";
+
 import Divisor from "../Divisor";
+import Button from "../../../components/Form/Button";
+import { Link } from "react-router-dom";
 
 function WellcomePage() {
   return (
@@ -13,19 +15,23 @@ function WellcomePage() {
         </div>
 
         <div className={styles.wellcomeWrapper}>
-          <h2
-            className={`${styles.wellcomeTitle} subtitle-gradient toTopAnimation`}
-          >
-            Olá, seja bem-vindo
-          </h2>
-          <p className={`${styles.wellcomeMessager} toTopAnimation`}>
-            Ao <b>SCAP</b>, o Sistema de Controle de Achados e Perdidos
-          </p>
+          <div className={`${styles.a} toTopAnimation`}>
+            <h2 className={`${styles.wellcomeTitle} subtitle-gradient `}>
+              Olá, seja bem-vindo
+            </h2>
+            <p className={`${styles.wellcomeMessager}`}>
+              Ao <b>SCAP</b>, o Sistema de Controle de Achados e Perdidos
+            </p>
+          </div>
 
           <div className={styles.wellcomeButtonContainer}>
-            <Button variante="primary">Entrar</Button>
+            <Link to="/signIn">
+              <Button variant="primary">Entrar</Button>
+            </Link>
             <Divisor />
-            <Button variante="secondary">Criar nova conta</Button>
+            <Link to="/register">
+              <Button variant="secondary">Criar nova conta</Button>
+            </Link>
           </div>
         </div>
       </div>

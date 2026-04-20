@@ -1,0 +1,36 @@
+import { createContext, useEffect } from "react";
+//import { useNavigate } from "react-router-dom";
+import { api, URL_BASE } from "../api/api";
+import { useNavigate } from "react-router-dom";
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const UserContext = createContext();
+
+export const UserStorage = ({ children }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {});
+
+  async function handdleLogin(bodyRequest) {
+    try {
+      const response = await api.post("/auth/login", bodyRequest);
+      const token = response.data.token.split(" ");
+
+      console.log(response);
+      window.localStorage.setItem(token[0], token[1]);
+
+      //isso ta fraco, melhorar depois
+      if (response.status == 200 && response.data.token) {
+        return navigate("/conta");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  return (
+    <UserContext.Provider value={{ handdleLogin }}>
+      {children}
+    </UserContext.Provider>
+  );
+};

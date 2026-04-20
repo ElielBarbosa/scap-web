@@ -5,8 +5,8 @@ import App from "./App.jsx";
 
 import "./assets/css/colors.css";
 import "./assets/css/typography.css";
-import "./assets/css/spacings.css";
 import "./assets/css/animations.css";
+import "./assets/css/spacings.css";
 import "./assets/css/buttons.css";
 import "./assets/css/icons.css";
 
