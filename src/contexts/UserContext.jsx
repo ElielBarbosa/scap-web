@@ -9,6 +9,8 @@ export const UserContext = createContext();
 export const UserStorage = ({ children }) => {
   const navigate = useNavigate();
   const [mostrar, setMostrar] = useState(false);
+  const [registerData, setRegisterData] = useState({});
+  const [selectedCampus, setSelectCampus] = useState();
 
   useEffect(() => {});
 
@@ -33,9 +35,34 @@ export const UserStorage = ({ children }) => {
     setMostrar(!mostrar);
   }
 
+  async function createNewUser() {
+    try {
+      const response = await api.post("/user", registerData, {
+        headers: {
+          "Content-Type": "application/json", // Garanta que isso seja enviado
+        },
+      });
+      console.log(response);
+
+      //setRegisterData({});
+    } catch (error) {
+      console.log(error.response);
+    }
+  }
+
   return (
     <UserContext.Provider
-      value={{ handdleLogin, mostrar, setMostrar, mudarModal }}
+      value={{
+        handdleLogin,
+        mostrar,
+        setMostrar,
+        mudarModal,
+        registerData,
+        setRegisterData,
+        selectedCampus,
+        setSelectCampus,
+        createNewUser,
+      }}
     >
       {children}
     </UserContext.Provider>

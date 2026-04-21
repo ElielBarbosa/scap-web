@@ -7,7 +7,8 @@ import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 
 function SelectCampusPage() {
-  const { mostrar, setMostrar } = useContext(UserContext);
+  const { mostrar } = useContext(UserContext);
+
   return (
     <>
       <div

@@ -28,7 +28,15 @@
 .campusCardTitle {
     font-size: 20px;
     line-height: 20px;
-    margin-bottom: 16px;
+    font-weight: 600;
+
+}
+
+.enderecoCampus {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-3);
+
 }
 
 .campusCardButton {

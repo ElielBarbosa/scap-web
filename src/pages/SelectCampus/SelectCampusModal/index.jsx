@@ -5,7 +5,8 @@ import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 
 function SelectCampusForm() {
-  const { mostrar, setMostrar } = useContext(UserContext);
+  const { mostrar, setMostrar, createNewUser } = useContext(UserContext);
+
   return (
     <div className={`${styles.campusModalContainer} opacityAnimation`}>
       <div className={`${styles.modalCampus} scaleAnimation`}>
@@ -17,7 +18,15 @@ function SelectCampusForm() {
         <p className={styles.modalCampusMessage}>
           Você selecionou o campus IFS - Tobias Barreto, deseja confirmar?
         </p>
-        <button className={styles.modalConfirmButton}>Confirmar</button>
+        <button
+          onClick={() => {
+            setMostrar(false);
+            createNewUser();
+          }}
+          className={styles.modalConfirmButton}
+        >
+          Confirmar
+        </button>
       </div>
     </div>
   );

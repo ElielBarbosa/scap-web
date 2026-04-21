@@ -8,7 +8,7 @@ import useForm from "../../../hooks/UseForm";
 import styles from "./styles.module.css";
 import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignUpForm() {
   const username = useForm();
@@ -16,26 +16,24 @@ function SignUpForm() {
   const password = useForm();
   const register = useForm();
 
-  const { createNewUser } = useContext(UserContext);
+  const { registerData, setRegisterData } = useContext(UserContext);
+  const navigate = useNavigate();
 
   function onSubmit(event) {
     event.preventDefault();
 
-    const bodyRequest = {
+    setRegisterData({
       username: username.value,
       email: email.value,
       passwordHash: password.value,
       registration: register.value,
-      campusId: 1,
-    };
+      campusId: null,
+    });
+    console.log(registerData);
 
-    try {
-      createNewUser(bodyRequest);
-      // console.log(response)
-    } catch (error) {
-      console.log(error);
-    }
+    navigate("/select-campus");
   }
+
   return (
     <>
       <div>
@@ -52,6 +50,7 @@ function SignUpForm() {
             placehoder="Nome"
             value={username.value}
             onChange={username.onChange}
+            required
           />
           <Input
             iconUrl={iconEmail}
@@ -60,6 +59,8 @@ function SignUpForm() {
             placehoder="E-mail"
             value={email.value}
             onChange={email.onChange}
+            required
+            required
           />
           <Input
             iconUrl={iconPassword}
@@ -83,9 +84,9 @@ function SignUpForm() {
             <Link to="/">
               <Button variant="secondary">Voltar</Button>
             </Link>
-            <Link to="/select-campus">
-              <Button variant="primary">Próximo</Button>
-            </Link>
+            <Button onClick={onSubmit} variant="primary">
+              Próximo
+            </Button>
           </div>
         </form>
       </div>
