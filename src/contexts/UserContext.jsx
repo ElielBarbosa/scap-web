@@ -1,4 +1,4 @@
-import { createContext, useEffect } from "react";
+import { createContext, useEffect, useState } from "react";
 //import { useNavigate } from "react-router-dom";
 import { api, URL_BASE } from "../api/api";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ export const UserContext = createContext();
 
 export const UserStorage = ({ children }) => {
   const navigate = useNavigate();
+  const [mostrar, setMostrar] = useState(false);
 
   useEffect(() => {});
 
@@ -28,8 +29,14 @@ export const UserStorage = ({ children }) => {
     }
   }
 
+  function mudarModal() {
+    setMostrar(!mostrar);
+  }
+
   return (
-    <UserContext.Provider value={{ handdleLogin }}>
+    <UserContext.Provider
+      value={{ handdleLogin, mostrar, setMostrar, mudarModal }}
+    >
       {children}
     </UserContext.Provider>
   );

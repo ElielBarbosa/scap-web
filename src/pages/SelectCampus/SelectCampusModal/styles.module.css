@@ -1,0 +1,61 @@
+.campusModalContainer {
+    position: fixed;
+    top: 0;
+    left: 0px;
+    width: 100%;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.199);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: hidden;
+
+}
+
+.modalCampus {
+    width: 100%;
+    max-width: 420px;
+    margin: 8px;
+    padding: 16px;
+    background-color: var(--white-light);
+    border-radius: 10px;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    box-shadow: var(--shadow-1);
+}
+
+.wrapperButtonClose {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.wrapperButtonClose>button {
+    /* border: 1px solid red; */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.wrapperButtonClose>button>img {
+    width: 30px;
+    padding: 5px;
+    box-sizing: content-box;
+}
+
+.modalConfirmButton {
+    background-color: var(--primary-normal);
+    color: var(--white-light);
+    padding: 16px 0;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: var(--shadow-1);
+}
+
+.modalCampusMessage {
+    text-align: center;
+}

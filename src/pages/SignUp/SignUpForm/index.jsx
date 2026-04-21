@@ -83,10 +83,8 @@ function SignUpForm() {
             <Link to="/">
               <Button variant="secondary">Voltar</Button>
             </Link>
-            <Link to="/selectCampus">
-              <Button variant="primary" onClick={() => window.alert("Olá")}>
-                Próximo
-              </Button>
+            <Link to="/select-campus">
+              <Button variant="primary">Próximo</Button>
             </Link>
           </div>
         </form>
