@@ -27,7 +27,6 @@ function Input({
           onBlur={onBlur}
           {...rest}
         />
-        {console.log(error)}
       </div>
       {error && <span className={styles.errorSpan}>{error}</span>}
     </>
