@@ -1,45 +1,68 @@
 import styles from "./styles.module.css";
 
 //import { z, ZodError } from "zod";
-import { useContext } from "react";
+///import { useContext } from "react";
 
 import Button from "../../../components/Form/Button";
 import Input from "../../../components/Form/Input";
-import useForm from "../../../hooks/UseForm";
+//import useForm from "../../../hooks/UseForm";
 import iconEmail from "../../../assets/icons/mail.svg";
 import iconPassword from "../../../assets/icons/lock.svg";
 import FormSectionHeader from "../../../components/Form/FormSectionHeader";
 import { UserContext } from "../../../contexts/UserContext";
 
+import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
 function SignInForm() {
-  //const [isLoading, setIsLoading] = useState(false);
+  const schemaLogin = yup.object({
+    email: yup
+      .string()
+      .required("E-mail é obrigatório")
+      .min(6, "minimo 6 caracteres"),
+    password: yup.string().required("Senha é obrigatória"),
+  });
 
-  const email = useForm();
-  const password = useForm();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    resolver: yupResolver(schemaLogin),
+  });
 
-  const { handdleLogin } = useContext(UserContext);
+  //const { handdleLogin } = useContext(UserContext);
 
-  function onSubmit(event) {
-    event.preventDefault();
-    try {
-      handdleLogin({ email: email.value, password: password.value });
-    } catch (err) {
-      console.log(err);
-    }
-    // try {
-    //   setIsLoading(true);
-    //   const data = signInSchema.parse({
-    //     email,
-    //     password,
-    //   });
-    // } catch (error) {
-    //   if (error instanceof ZodError) {
-    //     return alert(error.issues[0].message);
-    //   }
-    //   alert("Não foi possível cadastrar");
-    // } finally {
-    //   setIsLoading(false);
-    // }
+  //function onSubmit(event) {
+  // event.preventDefault();
+  // try {
+  //   handdleLogin({ email: email.value, password: password.value });
+  // } catch (err) {
+  //   console.log(err);
+  // }
+  // try {
+  //   setIsLoading(true);
+  //   const data = signInSchema.parse({
+  //     email,
+  //     password,
+  //   });
+  // } catch (error) {
+  //   if (error instanceof ZodError) {
+  //     return alert(error.issues[0].message);
+  //   }
+  //   alert("Não foi possível cadastrar");
+  // } finally {
+  //   setIsLoading(false);
+  // }
+  //}
+  function onSubmit(data) {
+    console.log(data);
+    console.log(errors);
   }
 
   return (
@@ -49,26 +72,38 @@ function SignInForm() {
         subtitle="Credenciais de usuário"
         paragraph="Por favor preencha os campos da forma correta para entrar"
       />
-      <form action="" onSubmit={onSubmit} className={styles.loginForm}>
-        <Input
-          iconUrl={iconEmail}
-          type="email"
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.loginForm}>
+        <Controller
+          control={control}
           name="email"
-          placehoder="E-mail"
-          value={email.value}
-          onChange={email.onChange}
-          required
+          render={({ field }) => (
+            <Input
+              iconUrl={iconEmail}
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              error={errors.email?.message}
+              {...field}
+            />
+          )}
         />
-        <Input
-          iconUrl={iconPassword}
-          type="password"
+        <Controller
+          control={control}
           name="password"
-          placehoder="Senha"
-          value={password.value}
-          onChange={password.onChange}
-          required
+          render={({ field }) => (
+            <Input
+              iconUrl={iconPassword}
+              type="password"
+              name="password"
+              placehoder="Senha"
+              error={errors.password?.message}
+              {...field}
+            />
+          )}
         />
-        <Button variant="primary">Entrar</Button>
+        <Button variant="primary" type="submit">
+          Entrar
+        </Button>
       </form>
     </div>
   );

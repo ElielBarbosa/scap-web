@@ -25,7 +25,9 @@ function Input({
           {...rest}
         />
       </div>
-      {error && <span className={styles.errorSpan}>{error}</span>}
+      {error && (
+        <span className={`${styles.errorSpan} toBottomAnimation`}>{error}</span>
+      )}
     </>
   );
 }

@@ -6,6 +6,10 @@
     animation: toTop-animation 1s .3s ease-out forwards;
 }
 
+.toBottomAnimation {
+    animation: toBottom-animation .3s ease-out forwards;
+}
+
 .scaleAnimation {
     opacity: 0;
     animation: scale-animation .2s ease-in forwards;
@@ -76,6 +80,18 @@
         transform: scale(0.5);
         display: none;
         /* Garante que o elemento não ocupe espaço */
+    }
+}
+
+@keyframes toBottom-animation {
+    0% {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 

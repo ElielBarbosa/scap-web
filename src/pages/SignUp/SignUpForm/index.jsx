@@ -4,34 +4,72 @@ import iconPassword from "../../../assets/icons/lock.svg";
 import iconEmail from "../../../assets/icons/mail.svg";
 import iconUser from "../../../assets/icons/user.svg";
 import iconId from "../../../assets/icons/id-badge.svg";
-import useForm from "../../../hooks/UseForm";
+//import useForm from "../../../hooks/UseForm";
 import styles from "./styles.module.css";
-import { useContext } from "react";
+//import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 
+import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
 function SignUpForm() {
-  const username = useForm();
-  const email = useForm();
-  const password = useForm();
-  const register = useForm();
-
-  const { registerData, setRegisterData } = useContext(UserContext);
+  //const { createNewUser } = useContext(UserContext);
   const navigate = useNavigate();
+  const registerSchema = yup.object({
+    username: yup
+      .string()
+      .min(6, "Min. 6 caracateres")
+      .required("Nome é obrigatório!"),
+    password: yup
+      .string()
+      .min(6, "Min. 6 caracteres")
+      .required("Senha é obrigatória"),
+    email: yup
+      .string()
+      .email("Insira um email válido")
+      .required("E-mail é obrigatório"),
+    register: yup
+      .string()
+      .min(8, "Min 8 caracteres.")
+      .required("Matrícula é obrigatória"),
+  });
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      username: "",
+      email: "",
+      password: "",
+      register: "",
+    },
+    resolver: yupResolver(registerSchema),
+  });
 
-  function onSubmit(event) {
-    event.preventDefault();
+  //const { registerData, setRegisterData } = useContext(UserContext);
 
-    setRegisterData({
-      username: username.value,
-      email: email.value,
-      passwordHash: password.value,
-      registration: register.value,
-      campusId: null,
-    });
-    console.log(registerData);
-
+  function onSubmit(data) {
+    // event.preventDefault();
+    // const bodyRequest = {
+    //   username: username.value,
+    //   email: email.value,
+    //   passwordHash: password.value,
+    //   registration: register.value,
+    //   campusId: 1,
+    // };
+    // try {
+    //   createNewUser(bodyRequest);
+    //   // console.log(response)
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    window.localStorage.setItem("dataRegister", JSON.stringify(data));
+    const dataGuardada = window.localStorage.getItem("dataRegister");
     navigate("/select-campus");
+    console.log(JSON.parse(dataGuardada));
   }
 
   return (
@@ -40,51 +78,71 @@ function SignUpForm() {
         <form
           action=""
           method="post"
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit(onSubmit)}
           className={`${styles.registerFormContainer}`}
         >
-          <Input
-            iconUrl={iconUser}
-            type="text"
+          <Controller
+            control={control}
             name="username"
-            placehoder="Nome"
-            value={username.value}
-            onChange={username.onChange}
-            required
+            render={({ field }) => (
+              <Input
+                iconUrl={iconUser}
+                type="text"
+                name="username"
+                placeholder="Nome"
+                error={errors.username?.message}
+                {...field}
+              />
+            )}
           />
-          <Input
-            iconUrl={iconEmail}
-            type="email"
+          <Controller
+            control={control}
             name="email"
-            placehoder="E-mail"
-            value={email.value}
-            onChange={email.onChange}
-            required
-            required
+            render={({ field }) => (
+              <Input
+                iconUrl={iconEmail}
+                type="text"
+                name="email"
+                placeholder="E-mail"
+                error={errors.email?.message}
+                {...field}
+              />
+            )}
           />
-          <Input
-            iconUrl={iconPassword}
-            type="password"
+          <Controller
+            control={control}
             name="password"
-            placehoder="Senha"
-            value={password.value}
-            onChange={password.onChange}
-            required
+            render={({ field }) => (
+              <Input
+                iconUrl={iconPassword}
+                type="text"
+                name="password"
+                placeholder="Senha"
+                error={errors.password?.message}
+                {...field}
+              />
+            )}
           />
-          <Input
-            iconUrl={iconId}
-            type="text"
+          <Controller
+            control={control}
             name="register"
-            placehoder="Matrícula"
-            value={register.value}
-            onChange={register.onChange}
-            required
+            render={({ field }) => (
+              <Input
+                iconUrl={iconId}
+                type="text"
+                name="register"
+                error={errors.register?.message}
+                placeholder="Matrícula"
+                {...field}
+              />
+            )}
           />
           <div className={`${styles.wrapperButtonRegister}`}>
             <Link to="/">
               <Button variant="secondary">Voltar</Button>
             </Link>
-            <Button onClick={onSubmit} variant="primary">
+
+            <Button variant="primary" type="submit">
               Próximo
             </Button>
           </div>

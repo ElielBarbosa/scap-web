@@ -10,9 +10,11 @@
 
 }
 
-.wrapperButtonRegister>a {
+.wrapperButtonRegister>a,
+.wrapperButtonRegister>button {
     flex-grow: 1;
     position: relative;
+    box-sizing: border-box;
 }
 
 .wrapperButtonRegister>a>button {

@@ -60,4 +60,5 @@
     color: var(--red-normal);
     font-size: 14px;
     font-weight: 700;
+    opacity: 0;
 }
