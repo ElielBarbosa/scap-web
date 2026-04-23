@@ -1,0 +1,10 @@
+.campusListContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    box-sizing: border-box;
+    position: relative;
+    padding: 48px 0;
+}

@@ -1,5 +1,7 @@
-import ErrorForm from "../FormError/ErrorForm";
 import styles from "./styles.module.css";
+import iconEye from "../../../assets/icons/eye.svg";
+import iconEyeOff from "../../../assets/icons/eye-off.svg";
+import { useState } from "react";
 
 function Input({
   iconUrl,
@@ -9,26 +11,39 @@ function Input({
   placehoder,
   error,
   onChange,
-  onBlur,
   ...rest
 }) {
+  const [seePassword, setSeePassword] = useState();
+
   return (
     <>
-      <div className={styles.inputWrapper}>
+      <div className={`${styles.inputWrapper} ${error && styles.errorInput}`}>
         <img src={iconUrl} alt="" srcset="" className={styles.iconInput} />
         <input
           name={name}
           id={name}
           placeholder={placehoder}
           className={styles.input}
-          type={type}
+          type={
+            type === "password" ? (seePassword ? "text" : "password") : type
+          }
           onChange={onChange}
           value={value}
-          onBlur={onBlur}
           {...rest}
         />
+        {type === "password" && (
+          <img
+            onClick={() => setSeePassword(!seePassword)}
+            src={seePassword ? iconEyeOff : iconEye}
+            alt=""
+            srcset=""
+            className={styles.iconEye}
+          />
+        )}
       </div>
-      {error && <span className={styles.errorSpan}>{error}</span>}
+      {error && (
+        <span className={`${styles.errorSpan} toBottomAnimation`}>{error}</span>
+      )}
     </>
   );
 }

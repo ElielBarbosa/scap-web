@@ -1,0 +1,22 @@
+.registerFormContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.wrapperButtonRegister {
+    display: flex;
+    gap: 8px;
+
+}
+
+.wrapperButtonRegister>a,
+.wrapperButtonRegister>button {
+    flex-grow: 1;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.wrapperButtonRegister>a>button {
+    width: 100%;
+}

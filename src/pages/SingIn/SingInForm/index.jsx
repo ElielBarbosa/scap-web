@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 
 //import { z, ZodError } from "zod";
-import { useContext } from "react";
+///import { useContext } from "react";
 
 import Button from "../../../components/Form/Button";
 import Input from "../../../components/Form/Input";
@@ -14,12 +14,15 @@ import { UserContext } from "../../../contexts/UserContext";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useContext } from "react";
 
 function SignInForm() {
+  const { handdleLogin, error, setError } = useContext(UserContext);
+
   const schemaLogin = yup.object({
     email: yup
       .string()
-      .required("E-mail obrigatório")
+      .required("E-mail é obrigatório")
       .min(6, "minimo 6 caracteres"),
     password: yup.string().required("Senha é obrigatória"),
   });
@@ -35,10 +38,6 @@ function SignInForm() {
     },
     resolver: yupResolver(schemaLogin),
   });
-
-  console.log("Erros: " + errors);
-
-  const { handdleLogin } = useContext(UserContext);
 
   //function onSubmit(event) {
   // event.preventDefault();
@@ -63,15 +62,14 @@ function SignInForm() {
   // }
   //}
   function onSubmit(data) {
-    console.log(data);
-    console.log(errors);
+    handdleLogin(data);
   }
 
   return (
     <div>
       <FormSectionHeader
         title="Login"
-        subtitle="Credenciais de usuário"
+        error={error}
         paragraph="Por favor preencha os campos da forma correta para entrar"
       />
       <form onSubmit={handleSubmit(onSubmit)} className={styles.loginForm}>
