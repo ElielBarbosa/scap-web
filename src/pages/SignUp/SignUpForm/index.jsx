@@ -6,7 +6,7 @@ import iconUser from "../../../assets/icons/user.svg";
 import iconId from "../../../assets/icons/id-badge.svg";
 //import useForm from "../../../hooks/UseForm";
 import styles from "./styles.module.css";
-import { useContext } from "react";
+//import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -15,7 +15,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 function SignUpForm() {
-  const { createNewUser } = useContext(UserContext);
+  //const { createNewUser } = useContext(UserContext);
   const navigate = useNavigate();
   const registerSchema = yup.object({
     username: yup
@@ -34,6 +34,7 @@ function SignUpForm() {
       .string()
       .min(8, "Min 8 caracteres.")
       .required("Matrícula é obrigatória"),
+
     passwordConfirmation: yup
       .string()
       .oneOf([yup.ref("password"), null], "As senhas não coincidem")
@@ -54,8 +55,6 @@ function SignUpForm() {
     resolver: yupResolver(registerSchema),
   });
 
-  //const { registerData, setRegisterData } = useContext(UserContext);
-
   function onSubmit(data) {
     // event.preventDefault();
     // const bodyRequest = {
@@ -66,7 +65,7 @@ function SignUpForm() {
     //   campusId: 1,
     // };
     try {
-      createNewUser(data);
+      //createNewUser(data);
       // console.log(response)
     } catch (error) {
       console.log(error);
@@ -75,6 +74,14 @@ function SignUpForm() {
     const dataGuardada = window.localStorage.getItem("dataRegister");
     navigate("/select-campus");
     console.log(JSON.parse(dataGuardada));
+    // try {
+    //   createNewUser(bodyRequest);
+    //   // console.log(response)
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    navigate("/select-campus");
+    console.log(data);
   }
 
   return (
@@ -114,6 +121,21 @@ function SignUpForm() {
               />
             )}
           />
+          <Controller
+            control={control}
+            name="password"
+            render={({ field }) => (
+              <Input
+                iconUrl={iconPassword}
+                type="text"
+                name="password"
+                placeholder="Senha"
+                error={errors.password?.message}
+                {...field}
+              />
+            )}
+          />
+
           <Controller
             control={control}
             name="register"
@@ -160,7 +182,6 @@ function SignUpForm() {
             <Link to="/">
               <Button variant="secondary">Voltar</Button>
             </Link>
-
             <Button variant="primary" type="submit">
               Próximo
             </Button>
