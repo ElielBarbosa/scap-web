@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 //import { useNavigate } from "react-router-dom";
 import { api, URL_BASE } from "../api/api";
 import { useNavigate } from "react-router-dom";
@@ -11,9 +11,8 @@ export const UserStorage = ({ children }) => {
   const [mostrar, setMostrar] = useState(false);
   const [registerData, setRegisterData] = useState({});
   const [selectedCampus, setSelectCampus] = useState();
-  const [error, setError] = useState(null);
-
-  useEffect(() => {});
+  const [errorRegister, setErrorRegister] = useState(null);
+  const [errorLogin, setErrorLogin] = useState(null);
 
   async function handdleLogin(bodyRequest) {
     try {
@@ -21,7 +20,7 @@ export const UserStorage = ({ children }) => {
       console.log(response);
 
       if (response.data.token) {
-        setError();
+        setErrorLogin(null);
         const token = response.data.token.split(" ");
         window.localStorage.setItem(token[0], token[1]);
       }
@@ -31,8 +30,7 @@ export const UserStorage = ({ children }) => {
         return navigate("/conta");
       }
     } catch (error) {
-      //console.log(error.response.data.message);
-      setError(error.response.data.message);
+      setErrorLogin(error.response.data.message);
     }
   }
 
@@ -42,17 +40,37 @@ export const UserStorage = ({ children }) => {
 
   async function createNewUser() {
     try {
-      setError();
+      setErrorRegister(null);
       const response = await api.post("/user", registerData, {
         headers: {
           "Content-Type": "application/json", // Garanta que isso seja enviado
         },
       });
-      console.log(response);
+      console.log(response.error);
+      console.log(response.data);
 
       //setRegisterData({});
     } catch (error) {
-      setError(error.response.message);
+      console.log(error.response);
+      setErrorRegister(error.response.data.message);
+    }
+  }
+
+  async function verifyUser(bodyRequest) {
+    try {
+      const response = await api.post("/user/verify", bodyRequest, {
+        headers: {
+          "Content-Type": "application/json", // Garanta que isso seja enviado
+        },
+      });
+      if (response.data.exist == true) {
+        setErrorRegister("E-mail ou matricula já existe!");
+        return response.data;
+      }
+      setErrorRegister(null);
+      return response.data;
+    } catch (error) {
+      console.error(error.response.data.exist);
     }
   }
 
@@ -68,8 +86,11 @@ export const UserStorage = ({ children }) => {
         selectedCampus,
         setSelectCampus,
         createNewUser,
-        error,
-        setError,
+        errorRegister,
+        setErrorRegister,
+        errorLogin,
+        setErrorLogin,
+        verifyUser,
       }}
     >
       {children}

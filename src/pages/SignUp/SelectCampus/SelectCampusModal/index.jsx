@@ -1,8 +1,8 @@
 import SelectCampusCard from "../SelectCampusCard";
 import styles from "./styles.module.css";
-import iconClose from "../../../assets/icons/close.svg";
+import iconClose from "../../../../assets/icons/close.svg";
 import { useContext } from "react";
-import { UserContext } from "../../../contexts/UserContext";
+import { UserContext } from "../../../../contexts/UserContext";
 
 function SelectCampusForm() {
   const { mostrar, setMostrar, createNewUser } = useContext(UserContext);

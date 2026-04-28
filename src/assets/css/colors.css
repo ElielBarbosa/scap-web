@@ -7,9 +7,9 @@
     --primary-dark-2: #024915;
 
     /*Cores Base*/
-    --white-light: #FFFFFF;
-    --white-normal: #F5FAF6;
-    --white-dark: #F2F2F2;
+    --white-light: #F7FFF9;
+    --white-normal: #EDFAF1;
+    --white-dark: #ECF8EF;
 
     --black-light: #212121;
     --black-normal: #121212;
@@ -40,5 +40,5 @@
     --gradient-2: linear-gradient(90deg, #0CBD3D 0%, #6adb79 100%);
 
     /*SOmbreamentos*/
-    --shadow-1: 0px 4px 10px rgba(4, 29, 3, 0.219);
+    --shadow-1: 0px 4px 10px rgba(14, 44, 22, 0.226);
 }

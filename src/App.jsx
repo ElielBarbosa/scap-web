@@ -6,7 +6,7 @@ import SignInPage from "./pages/SingIn/SignInPage";
 import SignUpPage from "./pages/SignUp/SignUpPage";
 import WellcomePage from "./pages/Wellcome/WellcomePage";
 import { UserStorage } from "./contexts/UserContext";
-import SelectCampusPage from "./pages/SelectCampus/SelectCampusPage";
+import SelectCampusPage from "./pages/SignUp/SelectCampus/SelectCampusPage";
 
 function App() {
   return (

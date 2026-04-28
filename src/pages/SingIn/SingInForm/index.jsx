@@ -18,7 +18,7 @@ import * as yup from "yup";
 import { useContext } from "react";
 
 function SignInForm() {
-  const { handdleLogin, error, setError } = useContext(UserContext);
+  const { handdleLogin } = useContext(UserContext);
 
   const schemaLogin = yup.object({
     email: yup
@@ -40,39 +40,12 @@ function SignInForm() {
     resolver: yupResolver(schemaLogin),
   });
 
-  //function onSubmit(event) {
-  // event.preventDefault();
-  // try {
-  //   handdleLogin({ email: email.value, password: password.value });
-  // } catch (err) {
-  //   console.log(err);
-  // }
-  // try {
-  //   setIsLoading(true);
-  //   const data = signInSchema.parse({
-  //     email,
-  //     password,
-  //   });
-  // } catch (error) {
-  //   if (error instanceof ZodError) {
-  //     return alert(error.issues[0].message);
-  //   }
-  //   alert("Não foi possível cadastrar");
-  // } finally {
-  //   setIsLoading(false);
-  // }
-  //}
   function onSubmit(data) {
     handdleLogin(data);
   }
 
   return (
-    <div>
-      <FormSectionHeader
-        title="Login"
-        error={error}
-        paragraph="Por favor preencha os campos da forma correta para entrar"
-      />
+    <>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.loginForm}>
         <Controller
           control={control}
@@ -106,7 +79,7 @@ function SignInForm() {
           Entrar
         </Button>
       </form>
-    </div>
+    </>
   );
 }
 

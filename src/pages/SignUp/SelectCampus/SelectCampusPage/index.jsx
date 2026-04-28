@@ -1,10 +1,10 @@
 import SelectCampusCard from "../SelectCampusCard";
 import styles from "./styles.module.css";
-import FormSectionHeader from "../../../components/Form/FormSectionHeader";
 import SelectCampusList from "../SelectCampusList";
 import SelectCampusModal from "../SelectCampusModal";
 import { useContext } from "react";
-import { UserContext } from "../../../contexts/UserContext";
+import { UserContext } from "../../../../contexts/UserContext";
+import FormSectionHeader from "../../../../components/Form/FormSectionHeader";
 
 function SelectCampusPage() {
   const { mostrar } = useContext(UserContext);

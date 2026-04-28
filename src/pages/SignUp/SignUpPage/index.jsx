@@ -5,13 +5,13 @@ import SignUpForm from "../SignUpForm";
 import { UserContext } from "../../../contexts/UserContext";
 
 function SignUpPage() {
-  const { error } = useContext(UserContext);
+  const { errorRegister } = useContext(UserContext);
   return (
     <>
       <div className="container introAnimation">
         <FormSectionHeader
           title="Cadastro"
-          error={error}
+          error={errorRegister}
           paragraph="Por favor preencha os campos da forma correta para criar uma nova conta"
         />
         <SignUpForm />

@@ -13,26 +13,28 @@ import { Link, useNavigate } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useContext } from "react";
 
 function SignUpForm() {
-  //const { createNewUser } = useContext(UserContext);
+  const { verifyUser, setRegisterData } = useContext(UserContext);
+
   const navigate = useNavigate();
   const registerSchema = yup.object({
     username: yup
       .string()
-      .min(6, "Min. 6 caracateres")
+      .min(6, "Nome deve ter no mínimo 6 caracteres")
       .required("Nome é obrigatório!"),
     password: yup
       .string()
-      .min(6, "Min. 6 caracteres")
+      .min(6, "Senha deve ter no mínimo 6 caracteres")
       .required("Senha é obrigatória"),
     email: yup
       .string()
       .email("Insira um email válido")
       .required("E-mail é obrigatório"),
-    register: yup
+    registration: yup
       .string()
-      .min(8, "Min 8 caracteres.")
+      .min(8, "Matrícula deve ter no mínimo 8 caracteres")
       .required("Matrícula é obrigatória"),
 
     passwordConfirmation: yup
@@ -40,6 +42,7 @@ function SignUpForm() {
       .oneOf([yup.ref("password"), null], "As senhas não coincidem")
       .required("Confirmação de senha é obrigatória"),
   });
+
   const {
     control,
     handleSubmit,
@@ -50,38 +53,23 @@ function SignUpForm() {
       email: "",
       password: "",
       passwordConfirmation: "",
-      register: "",
+      registration: "",
     },
     resolver: yupResolver(registerSchema),
   });
 
-  function onSubmit(data) {
-    // event.preventDefault();
-    // const bodyRequest = {
-    //   username: username.value,
-    //   email: email.value,
-    //   passwordHash: password.value,
-    //   registration: register.value,
-    //   campusId: 1,
-    // };
-    try {
-      //createNewUser(data);
-      // console.log(response)
-    } catch (error) {
-      console.log(error);
+  async function onSubmit(data) {
+    const response = await verifyUser({
+      email: data.email,
+      registration: data.registration,
+    });
+
+    if (response.exist == true) {
+      return;
     }
-    window.localStorage.setItem("dataRegister", JSON.stringify(data));
-    const dataGuardada = window.localStorage.getItem("dataRegister");
+
+    setRegisterData(data);
     navigate("/select-campus");
-    console.log(JSON.parse(dataGuardada));
-    // try {
-    //   createNewUser(bodyRequest);
-    //   // console.log(response)
-    // } catch (error) {
-    //   console.log(error);
-    // }
-    navigate("/select-campus");
-    console.log(data);
   }
 
   return (
@@ -121,30 +109,16 @@ function SignUpForm() {
               />
             )}
           />
-          <Controller
-            control={control}
-            name="password"
-            render={({ field }) => (
-              <Input
-                iconUrl={iconPassword}
-                type="text"
-                name="password"
-                placeholder="Senha"
-                error={errors.password?.message}
-                {...field}
-              />
-            )}
-          />
 
           <Controller
             control={control}
-            name="register"
+            name="registration"
             render={({ field }) => (
               <Input
                 iconUrl={iconId}
                 type="text"
-                name="register"
-                error={errors.register?.message}
+                name="registration"
+                error={errors.registration?.message}
                 placeholder="Matrícula"
                 {...field}
               />

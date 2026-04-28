@@ -1,8 +1,8 @@
 .primary,
 .secondary {
     color: var(--white-normal);
-    border-radius: 10px;
-    padding: 16px 32px;
+    border-radius: 4px;
+    padding: 13px 32px;
     font-size: 16px;
     line-height: 24px;
     font-family: var(--font);

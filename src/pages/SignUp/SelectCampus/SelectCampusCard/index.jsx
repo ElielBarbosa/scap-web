@@ -1,10 +1,10 @@
+import { UserContext } from "../../../../contexts/UserContext";
 import styles from "./styles.module.css";
-import { UserContext } from "../../../contexts/UserContext";
+
 import { useContext, useEffect } from "react";
 
 function SelectCampusCard({ id, campusName, address }) {
-  const { setMostrar } = useContext(UserContext);
-  const { registerData, setRegisterData } = useContext(UserContext);
+  const { registerData, setRegisterData, setMostrar } = useContext(UserContext);
 
   //só para ver se os state do campsu selecionado muda
   useEffect(() => {
