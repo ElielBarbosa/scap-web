@@ -1,5 +1,13 @@
 .signInContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+}
+
+@media (max-width: 960px) {
+    .signInContainer {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0px;
+    }
 }
