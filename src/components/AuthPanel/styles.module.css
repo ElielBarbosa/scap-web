@@ -4,9 +4,9 @@
     gap: 16px;
     background: radial-gradient(ellipse 103.66% 76.61% at 81.97% 6.66%, #2ECD43 0%, #A4EBAE 39%, #E0FAE4 80%, rgba(245.35, 253.08, 246.70, 0) 100%);
     width: 1fr;
-    aspect-ratio: 3/4;
-    max-height: 700px;
+    aspect-ratio: 9/14;
     border-radius: var(--br-1);
+    box-shadow: var(--shadow-1);
 }
 
 @media (max-width: 960px) {

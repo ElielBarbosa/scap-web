@@ -31,7 +31,7 @@
     color: var(--gray-2);
 }
 
-@media (max-width: 960px) {
+@media (min-width: 960px) {
     .formSectionHeaderContainer {
         display: flex;
         flex-direction: column;

@@ -1,5 +1,13 @@
 .signUpContainer {
     display: grid;
-    flex-direction: row;
-    justify-content: space-between;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 64px;
+}
+
+@media (max-width: 960px) {
+    .signUpContainer {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0px;
+    }
 }

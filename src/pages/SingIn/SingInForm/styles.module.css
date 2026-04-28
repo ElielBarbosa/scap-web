@@ -3,12 +3,12 @@
     flex-direction: column;
     box-sizing: border-box;
     position: relative;
-    gap: 24px;
+    gap: 16px;
     width: 100%;
 }
 
 .inputContainer {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+
 }

@@ -17,7 +17,9 @@ function Input({
 
   return (
     <>
-      <div className={`${styles.inputWrapper} ${error && styles.errorInput}`}>
+      <div
+        className={`${styles.inputWrapper} ${error && styles.errorInput} mb-1`}
+      >
         <img src={iconUrl} alt="" srcset="" className={styles.iconInput} />
         <input
           name={name}
@@ -42,7 +44,9 @@ function Input({
         )}
       </div>
       {error && (
-        <span className={`${styles.errorSpan} toBottomAnimation`}>{error}</span>
+        <span className={`${styles.errorSpan} toBottomAnimation mb-2`}>
+          {error}
+        </span>
       )}
     </>
   );
