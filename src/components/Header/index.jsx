@@ -6,17 +6,19 @@ import ProfileHeader from "./ProfileHeader";
 
 function Header({ userLoged = false }) {
   return (
-    <header className={`${styles.headerContainer} `}>
-      <Link to="/">
-        <img src={logo} alt="Logo da SCAP" className={styles.logoImage} />
-      </Link>
-      {userLoged ? (
-        <ProfileHeader />
-      ) : (
-        <Link to="/" className="primary">
-          Login/Registro
+    <header className={`${styles.headerContainer}`}>
+      <div className={`${styles.headerContent} container`}>
+        <Link to="/">
+          <img src={logo} alt="Logo da SCAP" className={styles.logoImage} />
         </Link>
-      )}
+        {userLoged ? (
+          <ProfileHeader />
+        ) : (
+          <Link to="/" className="primary">
+            Login/Registro
+          </Link>
+        )}
+      </div>
     </header>
   );
 }

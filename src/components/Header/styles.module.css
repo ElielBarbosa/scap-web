@@ -11,6 +11,13 @@
     z-index: 1000;
 }
 
+.headerContent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .logoImage {
     width: 50px;
     height: 50px;
