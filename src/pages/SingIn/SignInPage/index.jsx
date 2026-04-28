@@ -12,7 +12,7 @@ function SignInPage() {
   }, []);
 
   return (
-    <div className={`${styles.signInContainer} introAnimation container`}>
+    <div className={`${styles.signInContainer} introAnimation container pt-5`}>
       <FormSectionHeader
         title="Login"
         error={errorLogin}

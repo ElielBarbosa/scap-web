@@ -47,34 +47,36 @@ function SignInForm() {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.loginForm}>
-        <Controller
-          control={control}
-          name="email"
-          render={({ field }) => (
-            <Input
-              iconUrl={iconEmail}
-              type="email"
-              name="email"
-              placeholder="E-mail"
-              error={errors.email?.message}
-              {...field}
-            />
-          )}
-        />
-        <Controller
-          control={control}
-          name="password"
-          render={({ field }) => (
-            <Input
-              iconUrl={iconPassword}
-              type="password"
-              name="password"
-              placehoder="Senha"
-              error={errors.password?.message}
-              {...field}
-            />
-          )}
-        />
+        <div className={styles.inputContainer}>
+          <Controller
+            control={control}
+            name="email"
+            render={({ field }) => (
+              <Input
+                iconUrl={iconEmail}
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                error={errors.email?.message}
+                {...field}
+              />
+            )}
+          />
+          <Controller
+            control={control}
+            name="password"
+            render={({ field }) => (
+              <Input
+                iconUrl={iconPassword}
+                type="password"
+                name="password"
+                placehoder="Senha"
+                error={errors.password?.message}
+                {...field}
+              />
+            )}
+          />
+        </div>
         <Button variant="primary" type="submit">
           Entrar
         </Button>

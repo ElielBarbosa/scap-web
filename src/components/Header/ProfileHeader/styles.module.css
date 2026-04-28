@@ -1,0 +1,17 @@
+.profile {
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.profileImage {
+    padding: 8px;
+    background-color: rgb(180, 228, 180);
+    border: 2px solid var(--primary-normal);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userNameProfile {}

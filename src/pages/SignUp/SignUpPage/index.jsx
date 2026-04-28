@@ -8,7 +8,7 @@ function SignUpPage() {
   const { errorRegister } = useContext(UserContext);
   return (
     <>
-      <div className="container introAnimation">
+      <div className="container introAnimation pt-5">
         <FormSectionHeader
           title="Cadastro"
           error={errorRegister}

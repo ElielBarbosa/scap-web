@@ -8,7 +8,9 @@ import { Link } from "react-router-dom";
 function WellcomePage() {
   return (
     <>
-      <div className={`${styles.wellcomeContainer} container introAnimation`}>
+      <div
+        className={`${styles.wellcomeContainer} container introAnimation pt-5`}
+      >
         <div className={styles.logoContainer}>
           <img src={logo} alt="logo" className={styles.logo} />
           <span className={styles.logoName}>SCAP</span>
@@ -20,7 +22,7 @@ function WellcomePage() {
               Olá, seja bem-vindo
             </h2>
             <p className={`${styles.wellcomeMessager}`}>
-              Ao <b>SCAP</b>, o Sistema de Controle de Achados e Perdidos
+              SCAP — Sistema de Controle de Achados e Perdidos.
             </p>
           </div>
 

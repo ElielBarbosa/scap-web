@@ -6,7 +6,7 @@
     flex-direction: column;
     gap: 8px;
     padding: 8px;
-    border-radius: 10px;
+    border-radius: var(--br-1);
     box-shadow: var(--shadow-1);
 }
 
@@ -14,7 +14,7 @@
     width: 100%;
     height: 120px;
     background-color: rgb(77, 75, 75);
-    border-radius: 8px;
+    border-radius: var(--br-1);
     flex-shrink: 0;
 }
 
@@ -41,7 +41,7 @@
 
 .campusCardButton {
     background-color: var(--primary-normal);
-    border-radius: 8px;
+    border-radius: var(--br-1);
     width: 100%;
     padding: 12px 0;
     font-family: var(--font);

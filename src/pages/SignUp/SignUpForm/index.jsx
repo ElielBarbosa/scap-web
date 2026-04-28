@@ -81,81 +81,80 @@ function SignUpForm() {
           onSubmit={handleSubmit(onSubmit)}
           className={`${styles.registerFormContainer}`}
         >
-          <Controller
-            control={control}
-            name="username"
-            render={({ field }) => (
-              <Input
-                iconUrl={iconUser}
-                type="text"
-                name="username"
-                placeholder="Nome"
-                error={errors.username?.message}
-                {...field}
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="email"
-            render={({ field }) => (
-              <Input
-                iconUrl={iconEmail}
-                type="email"
-                name="email"
-                placeholder="E-mail"
-                error={errors.email?.message}
-                {...field}
-              />
-            )}
-          />
+          <div className={styles.inputContainerRegister}>
+            <Controller
+              control={control}
+              name="username"
+              render={({ field }) => (
+                <Input
+                  iconUrl={iconUser}
+                  type="text"
+                  name="username"
+                  placeholder="Nome"
+                  error={errors.username?.message}
+                  {...field}
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="email"
+              render={({ field }) => (
+                <Input
+                  iconUrl={iconEmail}
+                  type="email"
+                  name="email"
+                  placeholder="E-mail"
+                  error={errors.email?.message}
+                  {...field}
+                />
+              )}
+            />
 
-          <Controller
-            control={control}
-            name="registration"
-            render={({ field }) => (
-              <Input
-                iconUrl={iconId}
-                type="text"
-                name="registration"
-                error={errors.registration?.message}
-                placeholder="Matrícula"
-                {...field}
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="password"
-            render={({ field }) => (
-              <Input
-                iconUrl={iconPassword}
-                type="password"
-                name="password"
-                placeholder="Senha"
-                error={errors.password?.message}
-                {...field}
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="passwordConfirmation"
-            render={({ field }) => (
-              <Input
-                iconUrl={iconPassword}
-                type="password"
-                name="passwordConfirmation"
-                placeholder="Confirmar Senha"
-                error={errors.passwordConfirmation?.message}
-                {...field}
-              />
-            )}
-          />
+            <Controller
+              control={control}
+              name="registration"
+              render={({ field }) => (
+                <Input
+                  iconUrl={iconId}
+                  type="text"
+                  name="registration"
+                  error={errors.registration?.message}
+                  placeholder="Matrícula"
+                  {...field}
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="password"
+              render={({ field }) => (
+                <Input
+                  iconUrl={iconPassword}
+                  type="password"
+                  name="password"
+                  placeholder="Senha"
+                  error={errors.password?.message}
+                  {...field}
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="passwordConfirmation"
+              render={({ field }) => (
+                <Input
+                  iconUrl={iconPassword}
+                  type="password"
+                  name="passwordConfirmation"
+                  placeholder="Confirmar Senha"
+                  error={errors.passwordConfirmation?.message}
+                  {...field}
+                />
+              )}
+            />
+          </div>
           <div className={`${styles.wrapperButtonRegister}`}>
-            <Link to="/">
-              <Button variant="secondary">Voltar</Button>
-            </Link>
             <Button variant="primary" type="submit">
               Próximo
             </Button>

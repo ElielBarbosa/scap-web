@@ -19,7 +19,7 @@
     margin: 8px;
     padding: 16px;
     background-color: var(--white-light);
-    border-radius: 10px;
+    border-radius: var(--br-1);
     display: flex;
     gap: 16px;
     flex-direction: column;
@@ -51,7 +51,7 @@
     padding: 16px 0;
     width: 100%;
     border: none;
-    border-radius: 10px;
+    border-radius: var(--br-1);
     cursor: pointer;
     box-shadow: var(--shadow-1);
 }
