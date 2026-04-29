@@ -12,7 +12,7 @@ function SelectCampusPage() {
   return (
     <>
       <div
-        className={`${styles.selectCampusContainer} container introAnimation`}
+        className={`${styles.selectCampusContainer} container introAnimation py-5`}
       >
         <FormSectionHeader
           title="Selecione o campus"
