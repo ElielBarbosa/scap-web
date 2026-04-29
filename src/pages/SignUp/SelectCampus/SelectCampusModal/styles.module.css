@@ -10,40 +10,22 @@
     align-items: center;
     z-index: 1000;
     overflow: hidden;
-
+    backdrop-filter: blur(2px);
 }
 
 .modalCampus {
     width: 100%;
-    max-width: 420px;
+    max-width: 530px;
     margin: 8px;
-    padding: 16px;
+    padding: 24px;
     background-color: var(--white-light);
     border-radius: var(--br-1);
     display: flex;
-    gap: 16px;
     flex-direction: column;
     box-shadow: var(--shadow-1);
 }
 
-.wrapperButtonClose {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
-}
 
-.wrapperButtonClose>button {
-    /* border: 1px solid red; */
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.wrapperButtonClose>button>img {
-    width: 30px;
-    padding: 5px;
-    box-sizing: content-box;
-}
 
 .modalConfirmButton {
     background-color: var(--primary-normal);
@@ -57,5 +39,23 @@
 }
 
 .modalCampusMessage {
-    text-align: center;
+    text-align: left;
+}
+
+.checkIcon {
+    display: block;
+    width: 47px;
+    height: 47px;
+    aspect-ratio: 1/1;
+}
+
+.modalButtonContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.modalCancelButton {
+    background-color: red !important;
+    flex-grow: 1;
 }
