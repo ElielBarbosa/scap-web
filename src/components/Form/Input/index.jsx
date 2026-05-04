@@ -20,7 +20,9 @@ function Input({
       <div
         className={`${styles.inputWrapper} ${error && styles.errorInput} mb-1`}
       >
-        <img src={iconUrl} alt="" srcset="" className={styles.iconInput} />
+        {iconUrl ? (
+          <img src={iconUrl} alt="" srcset="" className={styles.iconInput} />
+        ) : null}
         <input
           name={name}
           id={name}

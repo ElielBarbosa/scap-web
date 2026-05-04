@@ -15,7 +15,7 @@ function Header({ userLoged = false }) {
           <ProfileHeader />
         ) : (
           <Link to="/" className="primary">
-            Login/Registro
+            Entra
           </Link>
         )}
       </div>

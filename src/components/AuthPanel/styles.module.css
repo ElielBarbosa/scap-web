@@ -2,15 +2,50 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    background: radial-gradient(ellipse 103.66% 76.61% at 81.97% 6.66%, #2ECD43 0%, #A4EBAE 39%, #E0FAE4 80%, rgba(245.35, 253.08, 246.70, 0) 100%);
-    width: 1fr;
-    aspect-ratio: 9/14;
+    background-image: url("../../assets/images/bg-card-1.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 2fr;
+    aspect-ratio: 14/18;
+
     border-radius: var(--br-1);
-    box-shadow: var(--shadow-1);
+
+
+    animation: show-images 20s linear alternate infinite;
+    transition: background-image 2s ease;
 }
 
 @media (max-width: 960px) {
     .authPanelContainer {
         display: none;
+    }
+}
+
+
+@keyframes show-images {
+    0% {
+        background-image: url("../../assets/images/bg-card-1.png");
+    }
+
+    45% {
+        background-image: url("../../assets/images/bg-card-1.png");
+    }
+
+    50% {
+        background-image: url("../../assets/images/bg-card-2.png");
+    }
+
+    75% {
+        background-image: url("../../assets/images/bg-card-2.png");
+
+    }
+
+    80% {
+        background-image: url("../../assets/images/bg-card-3.png");
+    }
+
+    100% {
+        background-image: url("../../assets/images/bg-card-3.png");
     }
 }

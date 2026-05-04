@@ -4,6 +4,7 @@ import logo from "../../../assets/images/logo-mobile.svg";
 import Divisor from "../Divisor";
 import Button from "../../../components/Form/Button";
 import { Link } from "react-router-dom";
+import AuthPanel from "../../../components/AuthPanel";
 
 function WellcomePage() {
   return (
@@ -11,6 +12,7 @@ function WellcomePage() {
       <div
         className={`${styles.wellcomeContainer} container introAnimation pt-5`}
       >
+        <AuthPanel />
         <div className={styles.logoContainer}>
           <img src={logo} alt="logo" className={styles.logo} />
           <span className={styles.logoName}>SCAP</span>

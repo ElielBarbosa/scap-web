@@ -17,7 +17,7 @@ function SignUpPage() {
           <FormSectionHeader
             title="Cadastro"
             error={errorRegister}
-            paragraph="Por favor preencha os campos da forma correta para criar uma nova conta"
+            paragraph="Por favor preencha os campos corretamente para criar uma nova conta"
           />
           <SignUpForm />
         </div>

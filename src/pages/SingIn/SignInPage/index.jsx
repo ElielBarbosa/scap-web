@@ -19,7 +19,7 @@ function SignInPage() {
         <FormSectionHeader
           title="Login"
           error={errorLogin}
-          paragraph="Por favor preencha os campos da forma correta para entrar"
+          paragraph="Preencha os campos corretamentepara acessar a plataforma."
         />
         <SignInForm></SignInForm>
       </div>

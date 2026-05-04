@@ -9,6 +9,7 @@ import { UserStorage } from "./contexts/UserContext";
 import SelectCampusPage from "./pages/SignUp/SelectCampus/SelectCampusPage";
 import Header from "./components/Header";
 import SmothScroll from "./components/SmothScroll";
+import NewLostItemPage from "./pages/NewLostItem/NewLostItemPage";
 
 function App() {
   return (
@@ -18,11 +19,11 @@ function App() {
           <SmothScroll>
             <Header />
             <Routes>
+              <Route path="/select-campus" element={<SelectCampusPage />} />
               <Route path="/" element={<WellcomePage />} />
               <Route path="/signin" element={<SignInPage />} />
-              <Route path="/conta" element={<WellcomePage />} />
               <Route path="/signup" element={<SignUpPage />} />
-              <Route path="/select-campus" element={<SelectCampusPage />} />
+              <Route path="/lost" element={<NewLostItemPage />} />
             </Routes>
           </SmothScroll>
         </UserStorage>

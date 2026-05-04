@@ -31,12 +31,22 @@
     color: var(--gray-2);
 }
 
+.logotype {
+    display: none;
+}
+
 @media (min-width: 960px) {
     .formSectionHeaderContainer {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
 
+    }
+
+    .logotype {
+        width: 200px;
+        height: auto;
+        display: inline-block;
     }
 
     .formSectionHeaderContainer>p {
