@@ -12,3 +12,7 @@
     flex-direction: column;
 
 }
+
+.signUpButtonWrapper>a>button {
+    width: 100%;
+}

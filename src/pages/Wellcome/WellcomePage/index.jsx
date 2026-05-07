@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 import logo from "../../../assets/images/logo-mobile.svg";
 
-import Divisor from "../Divisor";
+//import Divisor from "../Divisor";
 import Button from "../../../components/Form/Button";
 import { Link } from "react-router-dom";
 import AuthPanel from "../../../components/AuthPanel";
@@ -32,7 +32,7 @@ function WellcomePage() {
             <Link to="/signIn">
               <Button variant="primary">Entrar</Button>
             </Link>
-            <Divisor />
+
             <Link to="/signup">
               <Button variant="secondary">Criar nova conta</Button>
             </Link>

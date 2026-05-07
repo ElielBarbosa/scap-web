@@ -16,6 +16,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { useContext } from "react";
+import Divisor from "../Divisor";
+import { Link } from "react-router-dom";
 
 function SignInForm() {
   const { handdleLogin } = useContext(UserContext);
@@ -81,6 +83,12 @@ function SignInForm() {
           Entrar
         </Button>
       </form>
+      <div className={styles.signUpButtonWrapper}>
+        <Divisor>Ainda não possui conta?</Divisor>
+        <Link to="/signUp">
+          <Button variant="secondary">Criar conta</Button>
+        </Link>
+      </div>
     </>
   );
 }
