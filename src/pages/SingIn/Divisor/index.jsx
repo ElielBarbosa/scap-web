@@ -1,9 +1,9 @@
 import styles from "./styles.module.css";
 
-function Divisor() {
+function Divisor({ children }) {
   return (
     <div className={styles.divisor}>
-      <span className={styles.divisorSpan}>Ainda não possui conta?</span>
+      <span className={styles.divisorSpan}>{children}</span>
     </div>
   );
 }
