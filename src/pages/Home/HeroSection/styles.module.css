@@ -1,0 +1,51 @@
+.heroSectionContainer {
+    background: url("../../../assets/images/bg-hero.jpg") no-repeat center;
+    background-size: cover 100%;
+    background-position: center;
+    border-radius: 8px;
+    backdrop-filter: brightness(30%);
+    height: 365px;
+}
+
+.heroSectionContent {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.heroTitle {
+    color: var(--white-normal);
+    line-height: 64px;
+    font-weight: 600;
+}
+
+.spanTitle {
+    color: red;
+}
+
+.heroButton {
+    width: 187px;
+    height: 48px;
+    flex-grow: 0;
+}
+
+
+
+.heroSectionContent>button {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+
+@media (max-width: 720px) {
+    .heroSectionContainer {
+        width: 100%;
+        border-radius: 0;
+    }
+}

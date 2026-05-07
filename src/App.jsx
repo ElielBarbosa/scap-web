@@ -10,6 +10,7 @@ import SelectCampusPage from "./pages/SignUp/SelectCampus/SelectCampusPage";
 import Header from "./components/Header";
 import SmothScroll from "./components/SmothScroll";
 import NewLostItemPage from "./pages/NewLostItem/NewLostItemPage";
+import HomePage from "./pages/Home/HomePage";
 
 function App() {
   return (
@@ -20,10 +21,11 @@ function App() {
             <Header />
             <Routes>
               <Route path="/select-campus" element={<SelectCampusPage />} />
-              <Route path="/" element={<WellcomePage />} />
+              <Route path="/home" element={<WellcomePage />} />
               <Route path="/signin" element={<SignInPage />} />
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/lost" element={<NewLostItemPage />} />
+              <Route path="/" element={<HomePage />} />
             </Routes>
           </SmothScroll>
         </UserStorage>

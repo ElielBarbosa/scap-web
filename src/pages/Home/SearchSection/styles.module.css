@@ -1,0 +1,40 @@
+.searchSection {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.searchInputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    width: 100%;
+    padding: 0 8px;
+    border-radius: var(--br-1);
+    box-shadow: var(--shadow-1);
+}
+
+.searchInput {
+    padding: 10px;
+    border: none;
+    width: 100%;
+}
+
+.searchInput:focus {
+    outline: none;
+}
+
+.iconsSearch {
+    cursor: pointer;
+}
+
+.categoryContainer {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+
+    padding: 16px 0;
+}

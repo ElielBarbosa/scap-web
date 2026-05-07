@@ -1,0 +1,23 @@
+.myRequestsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.slideObjects {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 1200px) {
+    .slideObjects {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 720px) {
+    .slideObjects {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

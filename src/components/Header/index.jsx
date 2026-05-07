@@ -3,6 +3,7 @@ import logo from "../../assets/images/logo-mobile.svg";
 
 import { Link } from "react-router-dom";
 import ProfileHeader from "./ProfileHeader";
+import Button from "../Form/Button";
 
 function Header({ userLoged = false }) {
   return (
@@ -14,8 +15,8 @@ function Header({ userLoged = false }) {
         {userLoged ? (
           <ProfileHeader />
         ) : (
-          <Link to="/" className="primary">
-            Entra
+          <Link to="/signIn">
+            <Button variant="primary">Entrar</Button>
           </Link>
         )}
       </div>
