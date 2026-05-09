@@ -11,6 +11,7 @@ import Header from "./components/Header";
 import SmothScroll from "./components/SmothScroll";
 import NewLostItemPage from "./pages/NewLostItem/NewLostItemPage";
 import HomePage from "./pages/Home/HomePage";
+import ObjectDetailsPage from "./pages/ObjectDetails/ObjectDetailsPage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/lost" element={<NewLostItemPage />} />
               <Route path="/" element={<HomePage />} />
+              <Route path="/object" element={<ObjectDetailsPage />} />
             </Routes>
           </SmothScroll>
         </UserStorage>

@@ -13,7 +13,7 @@ function ObjectCard() {
             <span className={styles.status}>Achado</span>
           </div>
         </div>
-        <Link>
+        <Link to="/object">
           <Button variant="primary" fullWidth={true}>
             Ver detalhes
           </Button>

@@ -1,0 +1,14 @@
+.objectContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 960px) {
+    .objectContainer {
+        display: grid;
+        max-width: 720px;
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
