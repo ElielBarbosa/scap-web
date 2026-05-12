@@ -10,7 +10,8 @@ export const UserStorage = ({ children }) => {
   const navigate = useNavigate();
   const [mostrar, setMostrar] = useState(false);
   const [registerData, setRegisterData] = useState({});
-  const [selectedCampus, setSelectCampus] = useState();
+  const [selectedCampus, setSelectCampus] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
   const [errorRegister, setErrorRegister] = useState(null);
   const [errorLogin, setErrorLogin] = useState(null);
 
@@ -27,7 +28,7 @@ export const UserStorage = ({ children }) => {
 
       //isso ta fraco, melhorar depois
       if (response.status == 200 && response.data.token) {
-        return navigate("/conta");
+        return navigate("/");
       }
     } catch (error) {
       setErrorLogin(error.response.data.message);
