@@ -1,0 +1,12 @@
+.registerObjectHeader {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.iconPage {
+    width: 54px;
+    aspect-ratio: 1/1;
+}
+
+.pageTitle {}

@@ -1,0 +1,129 @@
+/* UploadBox.module.css */
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.container {
+    border: 2px dashed var(--primary-light);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    background-color: var(--white-light);
+    box-shadow: var(--shadow-1);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.container:hover {
+    background-color: #dcfce7;
+}
+
+.icon {
+    font-size: 48px;
+    color: #16a34a;
+    margin-bottom: 16px;
+}
+
+.text {
+    color: #166534;
+    font-size: 16px;
+}
+
+.browse {
+    color: #16a34a;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.input {
+    display: none;
+}
+
+
+.fileCard {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    animation: fadeIn 0.3s ease;
+}
+
+.fileThumb {
+    width: 48px;
+    height: 48px;
+    background-color: #c6f6d5;
+    border-radius: 6px;
+}
+
+.fileInfo {
+    flex: 1;
+}
+
+.fileName {
+    margin: 0;
+    font-size: 14px;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.fileSize {
+    font-size: 12px;
+    color: #a0aec0;
+}
+
+.deleteBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fileThumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    background-color: #f3f4f6;
+    overflow: hidden;
+    /* Garante que a imagem não saia das bordas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.thumbImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Faz a imagem cobrir o espaço sem sobrar espaços brancos */
+}
+
+.fileCard {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

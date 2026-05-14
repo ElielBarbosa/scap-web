@@ -1,0 +1,15 @@
+.registerObjectFormContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.registerObjectFormContainer {
+    gap: 8px;
+}
+
+@media(max-width: 960px) {
+    .registerObjectFormContainer {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,57 @@
+.select {
+    appearance: base-select;
+    background-color: var(--white-light);
+    color: var(--gray-6);
+    padding: 10px 8px;
+    border-radius: 4px;
+    box-shadow: var(--shadow-1);
+    border: none;
+    outline: 2px solid transparent;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+::picker(select) {
+    appearance: base-select;
+    font-family: 'Red Hat Display', sans-serif;
+    background-color: var(--white-light);
+    border-radius: 4px;
+    border: none;
+    outline: 2px solid var(--primary-normal);
+    box-shadow: var(--shadow-1);
+
+}
+
+.select::picker-icon {
+    font-size: 16px;
+    color: var(--primary-normal);
+    cursor: pointer;
+    transition: .3s ease-out;
+    content: "◮";
+}
+
+.select:open::picker-icon {
+    rotate: -180deg;
+}
+
+.option {
+    padding: 10px 8px;
+    transition: background-color .5s ease;
+}
+
+.option:hover {
+    background-color: var(--primary-light);
+    color: var(--white-light);
+    transition: background-color .5s ease;
+}
+
+.select option:checked {
+    background-color: var(--primary-light);
+    color: var(--white-light);
+}
+
+.select option:checkmark {
+    content: "√";
+}

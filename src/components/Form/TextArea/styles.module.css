@@ -1,0 +1,10 @@
+.textArea {
+    background-color: var(--white-light);
+    border: none;
+    border-radius: 4px;
+    outline: 2px solid transparent;
+    box-shadow: var(--shadow-1);
+    resize: none;
+    padding: 8px;
+    min-height: 150px;
+}
