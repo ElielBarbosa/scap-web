@@ -1,0 +1,40 @@
+.tableObjectsContainer{}
+.tableHeader{
+    background-color: var(--black-normal);
+    color: var(--white-normal);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-radius: 8px;
+    padding: 8px;
+}
+.rowContainer{
+    display: flex;
+    gap: 8px;
+}
+.row{
+    border-radius: 8px;
+    margin-top: 8px;
+    background-color: var(--white-light);
+    padding: 8px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    box-shadow: var(--shadow-1);
+    width: 100%;
+    align-items: center;
+}
+.imgCell{
+    background-color: silver;
+    width: 50px;
+    aspect-ratio: 1/1;
+}
+.cellTitle{
+
+    border-left: 1px solid var(--white-normal);
+    text-align: center;
+}
+.imgCellTitle{
+    border: none;
+}
+.cell{
+    padding: 8px;
+}

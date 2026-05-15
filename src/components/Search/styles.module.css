@@ -1,0 +1,22 @@
+.inputSearchWrapper {
+    width: 100%;
+    background-color: var(--white-light);
+    box-shadow: var(--shadow-1);
+    padding: 8px;
+    border-radius: 4px;
+    display: flex;
+}
+
+.inputSearch {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+}
+
+.inputSearch:focus {
+    outline: 1px solid transparent;
+}
+
+.iconSearch {
+    cursor: pointer;
+}
