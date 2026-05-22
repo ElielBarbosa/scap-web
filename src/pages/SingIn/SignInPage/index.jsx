@@ -9,15 +9,13 @@ import AuthPanel from "../../../components/AuthPanel";
 import { useNavigate } from "react-router-dom";
 
 function SignInPage() {
+  const { errorLogin, userLoged } = useContext(UserContext);
   const navigation = useNavigate();
-  const { setErrorLogin, errorLogin, userLoged } = useContext(UserContext);
-
   useEffect(() => {
-    setErrorLogin(null);
     if (userLoged) {
       navigation("/");
     }
-  }, []);
+  }, [userLoged, navigation]);
 
   return (
     <div className={`${styles.signInContainer} introAnimation container pt-5`}>
