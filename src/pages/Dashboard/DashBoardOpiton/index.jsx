@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function DashboardOption({ title, link }) {
   return (
-    <div className={styles.dashboardOption}>
+    <div className={`${styles.dashboardOption} introAnimation`}>
       <div className={`${styles.optionTitleWrapper} mb-3`}>
         <h6 className={styles.optionTitle}>{title}</h6>
         <Link to={link}>

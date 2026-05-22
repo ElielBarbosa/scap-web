@@ -3,51 +3,30 @@ import AuthRoutes from "./auth.route";
 import UserRoutes from "./user.route";
 import AdminRoutes from "./admin.route";
 import Loading from "../components/Loading";
-import { UserContext } from "../contexts/UserContext";
-import { useContext, useEffect } from "react";
-import { UserStorage } from "../contexts/UserContext";
+import { UserContext, UserStorage } from "../contexts/UserContext";
+import { useContext } from "react";
 
-//aqui a gente controla se o usuario esta logado ou não e, de acordo com o tipo de usuario, quais rotas ele pode acessar.
+// Juntamos a lógica em um único componente de controle
+function AppNavigation() {
+  const { userData, isLoading } = useContext(UserContext);
 
-// const session = {
-//   user: {
-//     role: "admin",
-//   },
-// };
-
-// 1. Este componente cuida especificamente de decidir QUAL rota renderizar
-function RouterContent() {
-  const { isLoading } = useContext(UserContext);
-
-  // Se estiver carregando os dados do usuário, trava a renderização aqui e mostra o Loading
+  // 1. Enquanto estiver verificando o token/login no localStorage, MOSTRA O LOADING
+  // Isso impede que qualquer rota seja renderizada antes da hora
   if (isLoading) {
     return <Loading />;
   }
-}
 
-function RouterFunc() {
-  const { userData } = useContext(UserContext);
-  // Quando terminar de carregar, decide a rota por perfil
-  // switch (session?.user?.role) {
-  //   case "user":
-  //     return <UserRoutes />;
-  //   case "visitor":
-  //     return <UserRoutes />;
-  //   case "admin":
-  //     return <AdminRoutes />;
-  //   default:
-  //     return <AuthRoutes />;
-  // }
+  // 2. Agora que já terminou de carregar, decide com base no dado real e atualizado
+  console.log("Nível do usuário atual:", userData?.userType);
 
-  console.log(userData?.userType);
-  useEffect(() => {}, [userData]);
   switch (userData?.userType) {
     case 1:
       return <UserRoutes />;
     case 2:
       return <AdminRoutes />;
     default:
-      return <AuthRoutes />;
+      // Se não for 1 nem 2 (ou for null/undefined), manda para o Login!
+      return <UserRoutes />;
   }
 }
 
@@ -55,8 +34,8 @@ function MyRoutes() {
   return (
     <BrowserRouter>
       <UserStorage>
-        <RouterContent />
-        <RouterFunc />
+        {/* O AppNavigation cuida de tudo de forma síncrona */}
+        <AppNavigation />
       </UserStorage>
     </BrowserRouter>
   );

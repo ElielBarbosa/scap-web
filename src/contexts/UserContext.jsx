@@ -61,13 +61,16 @@ export const UserStorage = ({ children }) => {
 
   //função para fazer logout e limpar os dados do usuário
   function userLogout() {
+    setLoading(true);
     setUserData(null);
     setErrorRegister(null);
     setErrorLogin(null);
-    setLoading(false);
     setUserLoged(false);
     window.localStorage.removeItem("token");
-    navigate("/");
+    window.location.href = "/";
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
   }
 
   async function handdleLogin(bodyRequest) {
@@ -88,8 +91,8 @@ export const UserStorage = ({ children }) => {
 
         if (userDataSigniIn) {
           setUserLoged(true);
-          navigate("/");
-          //setLoading(false);
+          window.location.href = "/";
+
           setLoading(false);
         }
       }

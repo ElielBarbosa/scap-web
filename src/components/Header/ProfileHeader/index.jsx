@@ -4,14 +4,13 @@ import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 
 function ProfileHeader({ username, role }) {
-  const { userLogout, setLoading } = useContext(UserContext);
+  const { userLogout } = useContext(UserContext);
   return (
     <span
       onClick={() => {
-        setLoading(true);
         userLogout();
       }}
-      className={`${styles.profile}`}
+      className={`${styles.profile} toTopAnimation`}
     >
       <span className={`${styles.profileImage}`}>
         <img src={iconProfile} alt="" srcset="" />
