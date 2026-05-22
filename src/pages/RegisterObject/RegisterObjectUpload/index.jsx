@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 import { useRef, useState } from "react";
-function RegisterObjectUpload() {
+function RegisterObjectUpload({ name }) {
   const inputRef = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -44,6 +44,7 @@ function RegisterObjectUpload() {
         </p>
 
         <input
+          name={name}
           type="file"
           ref={inputRef}
           className={styles.input}

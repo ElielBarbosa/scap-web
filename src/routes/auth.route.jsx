@@ -5,6 +5,7 @@ import SignInPage from "../pages/SingIn/SignInPage";
 import SelectCampusPage from "../pages/SignUp/SelectCampus/SelectCampusPage";
 import SignUpPage from "../pages/SignUp/SignUpPage";
 import AppLayout from "../components/AppLayout";
+import NotFoundPage from "../pages/NotFound/NotFoundPage";
 
 function AuthRoutes() {
   return (
@@ -14,6 +15,7 @@ function AuthRoutes() {
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/selectCampus" element={<SelectCampusPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </UserStorage>

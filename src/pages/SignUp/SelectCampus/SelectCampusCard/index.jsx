@@ -1,15 +1,15 @@
 import { UserContext } from "../../../../contexts/UserContext";
 import styles from "./styles.module.css";
 
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 function SelectCampusCard({ id, campusName, address }) {
   const { registerData, setRegisterData, setMostrar } = useContext(UserContext);
 
   //só para ver se os state do campsu selecionado muda
-  useEffect(() => {
-    console.log(registerData);
-  }, [registerData]);
+  // useEffect(() => {
+  //   console.log(registerData);
+  // }, [registerData]);
   const selectCampus = (event) => {
     const id = Number(event.target.parentElement.getAttribute("campusId"));
     setRegisterData({ ...registerData, campusId: id });

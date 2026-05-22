@@ -6,20 +6,54 @@ import TextArea from "../../../components/Form/TextArea";
 import Select from "../../../components/Form/Select";
 import Button from "../../../components/Form/Button";
 import RegisterObjectUpload from "../RegisterObjectUpload";
+import { registerObject } from "../../../api/api";
 
 function RegisterObjectForm() {
+  async function handleSubmit(e) {
+    // 1. Evita que a página recarregue (comportamento padrão do HTML)
+    e.preventDefault();
+
+    // 2. Captura todos os inputs do formulário automaticamente usando o atributo 'name' de cada um
+    //const formElement = e.currentTarget;
+    const formData = new FormData();
+    formData.append("name", e.currentTarget.name.value);
+    formData.append("category", e.currentTarget.category.value);
+    formData.append("description", e.currentTarget.description.value);
+    formData.append("image", e.currentTarget.image.files[0]);
+
+    console.log(formData.get("image"));
+    try {
+      // 3. Envia o formData (que já contém text e arquivo) para sua API
+      const response = await registerObject(formData);
+      console.log("Sucesso:", response);
+      //console.log("Erro", response.error);
+    } catch (error) {
+      console.log(error.response);
+      console.error("Erro ao enviar:", error);
+    }
+  }
+
   return (
-    <form className={styles.registerObjectFormContainer}>
+    <form
+      onSubmit={handleSubmit} // Apenas a referência, sem os parênteses
+      encType="multipart/form-data" // 'T' maiúsculo para JSX
+      className={styles.registerObjectFormContainer}
+    >
       <div className="dataContainer">
-        <Input placehoder="Nome" type="text" />
-        <Select className="w-100 mb-1" />
-        <TextArea className="w-100" placeholder="Descrição" />
-        <Button variant="primary" className="mt-1">
+        <Input name="name" placeholder="Nome" type="text" />
+        <Select name="category" className="w-100 mb-1" />
+        <TextArea
+          name="description"
+          className="w-100"
+          placeholder="Descrição"
+        />
+        <Button variant="primary" className="mt-1" type="submit">
           Registrar Objeto
         </Button>
       </div>
       <div className="uploadContainer">
-        <RegisterObjectUpload />
+        {/* Garanta que dentro desse componente exista um <input type="file" name="image" /> */}
+        <RegisterObjectUpload name="image" />
       </div>
     </form>
   );

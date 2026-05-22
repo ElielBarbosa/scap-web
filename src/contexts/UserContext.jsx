@@ -1,6 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 //import { useNavigate } from "react-router-dom";
-import { api, URL_BASE } from "../api/api";
+import { api, getUserByToken, URL_BASE, verifyToken } from "../api/api";
 import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -11,26 +11,90 @@ export const UserStorage = ({ children }) => {
   const [mostrar, setMostrar] = useState(false);
   const [registerData, setRegisterData] = useState({});
   const [selectedCampus, setSelectCampus] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [userData, setUserData] = useState({});
+  const [userLoged, setUserLoged] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [errorRegister, setErrorRegister] = useState(null);
   const [errorLogin, setErrorLogin] = useState(null);
 
+  useEffect(() => {
+    async function autoLogin() {
+      const token = window.localStorage.getItem("token");
+      console.log(token);
+      if (token) {
+        try {
+          setErrorRegister(null);
+          setErrorLogin(null);
+          setLoading(true);
+          //preciso de uma rota para verificar se o token é válido;
+          const response = await verifyToken(token);
+          console.log(response.data.valido);
+          //se o token n for ok, no caso a api retorna algo como {"ok": true ou false}
+          //caso seja !false, ou seja dá true, lança um erro que pegaremos no catch()
+          if (!response.data?.valido) {
+            throw new Error("Token inválido");
+          }
+          // uma rota que pega os dados de usuário a partir do token
+          //no outro projeto ele coloca os dados de usuário num state mesmo, no caso aqui, no userData
+          const data = await getUserByToken(token);
+
+          const userDataSigniIn = data.data.usuario;
+          console.log(data);
+
+          setUserLoged(true);
+          setUserData(userDataSigniIn);
+        } catch (error) {
+          console.log(error);
+          //Caso de erro fazemos o logout
+          userLogout();
+        } finally {
+          setTimeout(() => {
+            setLoading(false);
+          }, 3000);
+        }
+      }
+    }
+    autoLogin();
+  }, []);
+
+  //exemplo de logout
+
+  //função para fazer logout e limpar os dados do usuário
+  function userLogout() {
+    setUserData(null);
+    setErrorRegister(null);
+    setErrorLogin(null);
+    setLoading(false);
+    setUserLoged(false);
+    window.localStorage.removeItem("token");
+    navigate("/");
+  }
+
   async function handdleLogin(bodyRequest) {
     try {
-      const response = await api.post("/auth/login", bodyRequest);
+      setLoading(true);
+      const response = await api.post("/auth/signin", bodyRequest);
       console.log(response);
 
       if (response.data.token) {
         setErrorLogin(null);
-        const token = response.data.token.split(" ");
-        window.localStorage.setItem(token[0], token[1]);
-      }
 
-      //isso ta fraco, melhorar depois
-      if (response.status == 200 && response.data.token) {
-        return navigate("/");
+        const userDataSigniIn = response.data.user;
+        const token = response.data.token;
+        window.localStorage.setItem("token", token);
+        setUserData(userDataSigniIn);
+        console.log("eu aqui");
+        console.log(userDataSigniIn);
+
+        if (userDataSigniIn) {
+          setUserLoged(true);
+          navigate("/");
+          //setLoading(false);
+          setLoading(false);
+        }
       }
     } catch (error) {
+      //setLoading(false);
       setErrorLogin(error.response.data.message);
     }
   }
@@ -41,14 +105,27 @@ export const UserStorage = ({ children }) => {
 
   async function createNewUser() {
     try {
+      setLoading(true);
+
       setErrorRegister(null);
-      const response = await api.post("/user", registerData, {
+      const response = await api.post("/auth/signup", registerData, {
         headers: {
           "Content-Type": "application/json", // Garanta que isso seja enviado
         },
       });
-      console.log(response.error);
-      console.log(response.data);
+      console.log(registerData);
+
+      const token = response.data.token;
+      console.log(token);
+      const userDataRegister = response.data.user;
+
+      setUserData(userDataRegister);
+      window.localStorage.setItem("token", token);
+
+      if (userDataRegister) {
+        //setUserLoged(true);
+        navigate("/");
+      }
 
       //setRegisterData({});
     } catch (error) {
@@ -92,6 +169,11 @@ export const UserStorage = ({ children }) => {
         errorLogin,
         setErrorLogin,
         verifyUser,
+        isLoading,
+        setLoading,
+        userLoged,
+        userData,
+        userLogout,
       }}
     >
       {children}

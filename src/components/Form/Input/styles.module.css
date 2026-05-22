@@ -23,14 +23,11 @@
     width: 24px;
     height: 24px;
     box-sizing: content-box;
+    padding: 8px;
 }
 
 .iconEye {
     cursor: pointer;
-}
-
-.iconInput {
-    padding-right: 8px;
 }
 
 .input {

@@ -1,0 +1,27 @@
+.loadingContainer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(231, 230, 230, 0.767);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    z-index: 1001;
+}
+
+.iconLoading {
+    animation: loop .5s linear infinite;
+    transform-origin: center;
+    aspect-ratio: 1/2;
+    width: 80px;
+
+    display: inline-block;
+}
+
+@keyframes loop {
+    to {
+        rotate: 360deg;
+    }
+}

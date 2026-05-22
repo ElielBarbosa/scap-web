@@ -6,12 +6,17 @@ import { UserContext } from "../../../contexts/UserContext";
 import SignInForm from "../SingInForm";
 import FormSectionHeader from "../../../components/Form/FormSectionHeader";
 import AuthPanel from "../../../components/AuthPanel";
+import { useNavigate } from "react-router-dom";
 
 function SignInPage() {
-  const { setErrorLogin, errorLogin } = useContext(UserContext);
+  const navigation = useNavigate();
+  const { setErrorLogin, errorLogin, userLoged } = useContext(UserContext);
 
   useEffect(() => {
     setErrorLogin(null);
+    if (userLoged) {
+      navigation("/");
+    }
   }, []);
 
   return (

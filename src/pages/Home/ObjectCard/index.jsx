@@ -10,10 +10,11 @@ function ObjectCard() {
           <img src="" alt="" className={styles.objectCardImage} />
           <div className={styles.nameWrapper}>
             <h6 className={styles.nameObject}>Object Name</h6>
-            <span className={styles.status}>Achado</span>
+            <span className={styles.status}>● Achado</span>
           </div>
+          <span className={styles.date}>26 jan, 2026</span>
         </div>
-        <Link to="/object">
+        <Link to="/object-details">
           <Button variant="primary" fullWidth={true}>
             Ver detalhes
           </Button>

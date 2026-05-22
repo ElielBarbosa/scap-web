@@ -1,0 +1,16 @@
+.dashboardContainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+@media(max-width: 960px) {
+    .dashboardContainer{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media(max-width: 575px) {
+    .dashboardContainer{
+        grid-template-columns: 1fr;
+    }
+}

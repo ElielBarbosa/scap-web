@@ -4,9 +4,14 @@ import styles from "./styles.module.css";
 import SignUpForm from "../SignUpForm";
 import { UserContext } from "../../../contexts/UserContext";
 import AuthPanel from "../../../components/AuthPanel";
+import { useNavigate } from "react-router-dom";
 
 function SignUpPage() {
-  const { errorRegister } = useContext(UserContext);
+  const { errorRegister, userLoged } = useContext(UserContext);
+  const navigation = useNavigate();
+  if (userLoged) {
+    navigation("/");
+  }
   return (
     <>
       <div
