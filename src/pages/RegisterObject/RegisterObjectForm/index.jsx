@@ -7,21 +7,30 @@ import Select from "../../../components/Form/Select";
 import Button from "../../../components/Form/Button";
 import RegisterObjectUpload from "../RegisterObjectUpload";
 import { registerObject } from "../../../api/api";
+import { useContext } from "react";
+import { UserContext } from "../../../contexts/UserContext";
 
 function RegisterObjectForm() {
+  const { userData } = useContext(UserContext);
+
   async function handleSubmit(e) {
     // 1. Evita que a página recarregue (comportamento padrão do HTML)
     e.preventDefault();
+    console.log(userData);
 
     // 2. Captura todos os inputs do formulário automaticamente usando o atributo 'name' de cada um
     //const formElement = e.currentTarget;
     const formData = new FormData();
-    formData.append("name", e.currentTarget.name.value);
+    formData.append("nameObject", e.currentTarget.nameObject.value);
     formData.append("category", e.currentTarget.category.value);
     formData.append("description", e.currentTarget.description.value);
     formData.append("image", e.currentTarget.image.files[0]);
+    formData.append("campusId", userData.campusId);
+    formData.append("userId", userData.id);
 
     console.log(formData.get("image"));
+    //para ver os dados no console:
+    console.log(Object.fromEntries(formData.entries()));
     try {
       // 3. Envia o formData (que já contém text e arquivo) para sua API
       const response = await registerObject(formData);
@@ -40,7 +49,7 @@ function RegisterObjectForm() {
       className={styles.registerObjectFormContainer}
     >
       <div className="dataContainer">
-        <Input name="name" placeholder="Nome" type="text" />
+        <Input name="nameObject" placeholder="Nome" type="text" />
         <Select name="category" className="w-100 mb-1" />
         <TextArea
           name="description"

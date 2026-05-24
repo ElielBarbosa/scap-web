@@ -2,5 +2,8 @@
     width: 100%;
     aspect-ratio: 1/1;
     background-color: silver;
+    background-repeat: no-repeat;
+    background-size: 120%;
+    background-position: center;
     border-radius: 8px;
 }

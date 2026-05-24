@@ -7,7 +7,11 @@ function ObjectCard() {
     <>
       <div className={styles.objectCard}>
         <div>
-          <img src="" alt="" className={styles.objectCardImage} />
+          <img
+            src="http://localhost:3000/uploads/1779560834065-550659387.webp"
+            alt=""
+            className={styles.objectCardImage}
+          />
           <div className={styles.nameWrapper}>
             <h6 className={styles.nameObject}>Object Name</h6>
             <span className={styles.status}>● Achado</span>

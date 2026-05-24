@@ -4,6 +4,10 @@
     gap: 64px;
 }
 
+/* .signInContainer>div {
+    width: 420px;
+} */
+
 @media (max-width: 960px) {
     .signInContainer {
         display: grid;
