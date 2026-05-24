@@ -9,10 +9,10 @@ import { UserContext } from "../../contexts/UserContext";
 
 function Header() {
   const { userLoged, userData } = useContext(UserContext);
-  console.log(userData);
+  //console.log(userData);
   return (
     <header className={`${styles.headerContainer}`}>
-      <div className={`${styles.headerContent} container`}>
+      <div className={`${styles.headerContent} px-2`}>
         <Link to="/">
           <img src={logo} alt="Logo da SCAP" className={styles.logoImage} />
         </Link>

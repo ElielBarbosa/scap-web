@@ -17,7 +17,7 @@ function AppNavigation() {
   }
 
   // 2. Agora que já terminou de carregar, decide com base no dado real e atualizado
-  console.log("Nível do usuário atual:", userData?.userType);
+  //console.log("Nível do usuário atual:", userData?.userType);
 
   switch (userData?.userType) {
     case 1:

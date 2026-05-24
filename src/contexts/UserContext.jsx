@@ -20,7 +20,7 @@ export const UserStorage = ({ children }) => {
   useEffect(() => {
     async function autoLogin() {
       const token = window.localStorage.getItem("token");
-      console.log(token);
+      // console.log(token);
       if (token) {
         try {
           setErrorRegister(null);
@@ -28,7 +28,7 @@ export const UserStorage = ({ children }) => {
           setLoading(true);
           //preciso de uma rota para verificar se o token é válido;
           const response = await verifyToken(token);
-          console.log(response.data.valido);
+          //console.log(response.data.valido);
           //se o token n for ok, no caso a api retorna algo como {"ok": true ou false}
           //caso seja !false, ou seja dá true, lança um erro que pegaremos no catch()
           if (!response.data?.valido) {
@@ -38,11 +38,8 @@ export const UserStorage = ({ children }) => {
           //no outro projeto ele coloca os dados de usuário num state mesmo, no caso aqui, no userData
           const data = await getUserByToken(token);
 
-          const userDataSigniIn = data.data.usuario;
-          console.log(data);
-
           setUserLoged(true);
-          setUserData(userDataSigniIn);
+          setUserData(data.data.usuario);
         } catch (error) {
           console.log(error);
           //Caso de erro fazemos o logout
@@ -50,14 +47,12 @@ export const UserStorage = ({ children }) => {
         } finally {
           setTimeout(() => {
             setLoading(false);
-          }, 3000);
+          }, 1000);
         }
       }
     }
     autoLogin();
   }, []);
-
-  //exemplo de logout
 
   //função para fazer logout e limpar os dados do usuário
   function userLogout() {
@@ -77,7 +72,6 @@ export const UserStorage = ({ children }) => {
     try {
       setLoading(true);
       const response = await api.post("/auth/signin", bodyRequest);
-      console.log(response);
 
       if (response.data.token) {
         setErrorLogin(null);
@@ -86,8 +80,6 @@ export const UserStorage = ({ children }) => {
         const token = response.data.token;
         window.localStorage.setItem("token", token);
         setUserData(userDataSigniIn);
-        console.log("eu aqui");
-        console.log(userDataSigniIn);
 
         if (userDataSigniIn) {
           setUserLoged(true);
@@ -116,10 +108,8 @@ export const UserStorage = ({ children }) => {
           "Content-Type": "application/json", // Garanta que isso seja enviado
         },
       });
-      console.log(registerData);
 
       const token = response.data.token;
-      console.log(token);
       const userDataRegister = response.data.user;
 
       setUserData(userDataRegister);
