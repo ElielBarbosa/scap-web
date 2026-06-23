@@ -5,7 +5,7 @@ import RegisterObjectHeader from "../RegisterObjectHeader";
 
 function RegisterObjectPage() {
   return (
-    <main className="container mt-5 mb-4">
+    <main className="container mt-5 mb-4 introAnimation">
       <RegisterObjectHeader />
       <RegisterObjectForm />
     </main>

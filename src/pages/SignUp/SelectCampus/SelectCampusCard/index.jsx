@@ -3,13 +3,9 @@ import styles from "./styles.module.css";
 
 import { useContext } from "react";
 
-function SelectCampusCard({ id, campusName, address }) {
+function SelectCampusCard({ id, campusName, city, address }) {
   const { registerData, setRegisterData, setMostrar } = useContext(UserContext);
 
-  //só para ver se os state do campsu selecionado muda
-  // useEffect(() => {
-  //   console.log(registerData);
-  // }, [registerData]);
   const selectCampus = (event) => {
     const id = Number(event.target.parentElement.getAttribute("campusId"));
     setRegisterData({ ...registerData, campusId: id });
@@ -23,6 +19,7 @@ function SelectCampusCard({ id, campusName, address }) {
       <div className={styles.dataCampusWrapper} campusId={id}>
         <h5 className={styles.campusCardTitle}>{campusName}</h5>
         <span className={styles.enderecoCampus}>{address}</span>
+        <span className={styles.enderecoCampus}>{city}</span>
         <button onClick={selectCampus} className={styles.campusCardButton}>
           Selecionar
         </button>

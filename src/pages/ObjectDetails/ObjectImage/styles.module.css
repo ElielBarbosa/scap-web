@@ -6,4 +6,5 @@
     background-size: 120%;
     background-position: center;
     border-radius: 8px;
+    box-shadow: var(--shadow-1);
 }

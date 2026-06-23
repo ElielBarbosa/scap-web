@@ -9,7 +9,7 @@ export const UserContext = createContext();
 export const UserStorage = ({ children }) => {
   const navigate = useNavigate();
   const [mostrar, setMostrar] = useState(false);
-  const [registerData, setRegisterData] = useState({});
+  const [registerData, setRegisterData] = useState(null);
   const [selectedCampus, setSelectCampus] = useState({});
   const [userData, setUserData] = useState({});
   const [userLoged, setUserLoged] = useState(false);
@@ -32,6 +32,7 @@ export const UserStorage = ({ children }) => {
           //se o token n for ok, no caso a api retorna algo como {"ok": true ou false}
           //caso seja !false, ou seja dá true, lança um erro que pegaremos no catch()
           if (!response.data?.valido) {
+            userLogout();
             throw new Error("Token inválido");
           }
           // uma rota que pega os dados de usuário a partir do token
@@ -39,7 +40,9 @@ export const UserStorage = ({ children }) => {
           const data = await getUserByToken(token);
 
           setUserLoged(true);
-          setUserData(data.data.usuario);
+          await setUserData(data.data.usuario);
+          console.log(data.data.usuario);
+          console.log(userData);
         } catch (error) {
           console.log(error);
           //Caso de erro fazemos o logout
@@ -62,10 +65,10 @@ export const UserStorage = ({ children }) => {
     setErrorLogin(null);
     setUserLoged(false);
     window.localStorage.removeItem("token");
-    window.location.href = "/";
     setTimeout(() => {
       setLoading(false);
     }, 3000);
+    window.location.href = "/";
   }
 
   async function handdleLogin(bodyRequest) {
@@ -87,9 +90,15 @@ export const UserStorage = ({ children }) => {
 
           setLoading(false);
         }
+        console.log("Aqui", response.status);
       }
     } catch (error) {
       //setLoading(false);
+      if (error.message === "Network Error") {
+        setErrorLogin(
+          "Por favor, verifique sua conexão ou tente novamente mais tarde.",
+        );
+      }
       setErrorLogin(error.response.data.message);
     }
   }
@@ -122,7 +131,11 @@ export const UserStorage = ({ children }) => {
 
       //setRegisterData({});
     } catch (error) {
-      console.log(error.response);
+      if (error.message === "Network Error") {
+        setErrorRegister(
+          "Por favor, verifique sua conexão ou tente novamente mais tarde.",
+        );
+      }
       setErrorRegister(error.response.data.message);
     }
   }
@@ -141,6 +154,11 @@ export const UserStorage = ({ children }) => {
       setErrorRegister(null);
       return response.data;
     } catch (error) {
+      if (error.message) {
+        setErrorRegister(
+          "Por favor, verifique sua conexão ou tente novamente mais tarde.",
+        );
+      }
       console.error(error.response.data.exist);
     }
   }

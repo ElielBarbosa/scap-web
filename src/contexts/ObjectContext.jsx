@@ -8,6 +8,7 @@ export const ObjectContext = createContext();
 export const ObjectStorage = ({ children }) => {
   const [objects, setObjects] = useState([]);
   const [objectsRecentlyAdded, setObjectsRecentlyAdded] = useState([]);
+  const [objectDetailsById, setObjectDetailsById] = useState({});
 
   async function getObjectsRecentlyAdded(campusId) {
     try {
@@ -19,8 +20,15 @@ export const ObjectStorage = ({ children }) => {
       console.error("Error fetching recently added objects:", error);
     }
   }
-
-  console.log(objectsRecentlyAdded);
+  async function getObjectDetailsById(objectId) {
+    try {
+      const response = await api.get(`/object/${objectId}`);
+      console.log(response);
+      setObjectDetailsById(response.data);
+    } catch (error) {
+      console.error("Error fetching object details:", error);
+    }
+  }
 
   return (
     <ObjectContext.Provider
@@ -29,6 +37,9 @@ export const ObjectStorage = ({ children }) => {
         setObjects,
         objectsRecentlyAdded,
         getObjectsRecentlyAdded,
+        objectDetailsById,
+        setObjectDetailsById,
+        getObjectDetailsById,
       }}
     >
       {children}

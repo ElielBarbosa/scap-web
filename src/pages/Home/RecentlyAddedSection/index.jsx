@@ -13,13 +13,14 @@ function RecentlyAddedSection() {
 
   useEffect(() => {
     async function handdleObjects() {
+      console.log(userLoged && userData.campusId);
+      console.log(userLoged, userData.campusId);
       if (userLoged && userData.campusId) {
         await getObjectsRecentlyAdded(userData.campusId);
       }
-      await getObjectsRecentlyAdded(2);
     }
     handdleObjects();
-  }, []);
+  }, [userLoged]);
 
   return (
     <section className={`${styles.myRequestsContainer} my-3 container`}>

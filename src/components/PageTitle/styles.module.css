@@ -1,0 +1,17 @@
+.pageTitleContainer {
+    display: flex;
+    margin: 24px 0;
+    align-items: center;
+}
+
+.pageTitleIcon {
+    width: 38px;
+    height: 38px;
+    margin-right: 8px;
+}
+
+.pageTitle {
+    font-size: 32px;
+    line-height: 28px;
+    font-weight: 600;
+}

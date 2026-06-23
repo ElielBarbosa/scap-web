@@ -1,5 +1,7 @@
 import styles from "./styles.module.css";
 import { useRef, useState } from "react";
+import deleteIcon from "../../../assets/icons/trash-red.svg";
+
 function RegisterObjectUpload({ name }) {
   const inputRef = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -73,7 +75,7 @@ function RegisterObjectUpload({ name }) {
             <span className={styles.fileSize}>{selectedFile.size}</span>
           </div>
           <button className={styles.deleteBtn} onClick={handleDeleteFile}>
-            X
+            <img src={deleteIcon} alt="Delete" />
           </button>
         </div>
       )}

@@ -1,17 +1,25 @@
 .dashboardOption {
     background-color: var(--primary-normal);
     display: inline-block;
-    padding: 4px 8px;
+    width: 280px;
+    height: 120px;
+    padding: 8px;
     border-radius: 8px;
     box-shadow: var(--shadow-1);
     cursor: pointer;
-    transition: background-color .5s ease;
+    transition: filter .5s ease;
     opacity: 0;
 }
 
+@media(max-width: 960px) {
+    .dashboardOption {
+        width: 100%;
+    }
+}
+
 .dashboardOption:hover {
-    background-color: var(--primary-dark);
-    transition: background-color .5s ease;
+    filter: brightness(0.8);
+    transition: filter .5s ease;
 
 }
 
@@ -25,22 +33,26 @@
 .optionTitleWrapper {
     display: flex;
     font-size: 16px;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 8px;
 }
 
 .optionButton {
-    background-color: var(--white-normal);
+    background-color: transparent;
     border: none;
-    width: 30px;
-    height: 30px;
     box-sizing: border-box;
     border-radius: 50%;
     cursor: pointer;
 }
 
+.optionButton>img {
+    width: 22px;
+    height: 22px;
+
+}
+
 .optionTitle {
     color: var(--white-normal);
-
+    line-height: 24px;
 }

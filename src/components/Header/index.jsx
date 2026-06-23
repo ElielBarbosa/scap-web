@@ -12,10 +12,11 @@ function Header() {
   //console.log(userData);
   return (
     <header className={`${styles.headerContainer}`}>
-      <div className={`${styles.headerContent} px-2`}>
+      <div className={`${styles.headerContent} px-2 container`}>
         <Link to="/">
           <img src={logo} alt="Logo da SCAP" className={styles.logoImage} />
         </Link>
+     
         {userLoged ? (
           <ProfileHeader username={userData.username} />
         ) : (

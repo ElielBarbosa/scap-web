@@ -18,7 +18,10 @@ function UserRoutes() {
           <Routes>
             <Route path="/" element={<AppLayout />}>
               <Route path="/" element={<HomePage />} />
-              <Route path="/object-details" element={<ObjectDetailsPage />} />
+              <Route
+                path="/object-details/:id"
+                element={<ObjectDetailsPage />}
+              />
               <Route path="/select-campus" element={<SelectCampusPage />} />
               <Route path="/signin" element={<SignInPage />} />
               <Route path="/signup" element={<SignUpPage />} />

@@ -8,6 +8,7 @@ import Button from "../../../components/Form/Button";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
+import TitlePage from "../../../components/TitlePage";
 
 //icons para pagianção
 //import iconChevronLeft from "../../../assets/icons/chevron-left.svg";

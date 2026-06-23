@@ -1,0 +1,8 @@
+.tableHeader {
+    background-color: var(--black-normal);
+    color: var(--white-normal);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-radius: 8px;
+    padding: 8px;
+}

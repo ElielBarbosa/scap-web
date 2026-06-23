@@ -23,15 +23,15 @@
     --gray-6: #6B746C;
 
     /*Cores Auxiliares*/
-    --red-normal: #AC0001;
-    --red-dark: #CA0C0E;
-    --red-ligth: #E43333;
+    --red-normal: #CA0C0E;
+    --red-dark: #AC0001;
+    --red-light: #E43333;
 
     --green-normal: #32D957;
     --green-dark: #28BB49;
     --green-light: #50E170;
 
-    --yellow-normal: #FFCE52;
+    --yellow-normal: #FFCC00;
     --yellow-dark: #D9B043;
     --yellow-light: #FFD76B;
 
@@ -41,4 +41,17 @@
 
     /*SOmbreamentos*/
     --shadow-1: 0px 4px 10px rgba(23, 51, 31, 0.137);
+}
+
+
+.bg-red {
+    background-color: var(--red-light);
+}
+
+.bg-green {
+    background-color: var(--green-normal);
+}
+
+.bg-yellow {
+    background-color: var(--yellow-normal);
 }

@@ -2,12 +2,20 @@ import SelectCampusCard from "../SelectCampusCard";
 import styles from "./styles.module.css";
 import SelectCampusList from "../SelectCampusList";
 import SelectCampusModal from "../SelectCampusModal";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../../../contexts/UserContext";
 import FormSectionHeader from "../../../../components/Form/FormSectionHeader";
+import { useNavigate } from "react-router-dom";
 
 function SelectCampusPage() {
-  const { mostrar } = useContext(UserContext);
+  const { mostrar, registerData } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (registerData == null) {
+      navigate("/signup");
+    }
+  }, [registerData, navigate]);
 
   return (
     <>

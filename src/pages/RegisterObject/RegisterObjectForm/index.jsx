@@ -7,11 +7,27 @@ import Select from "../../../components/Form/Select";
 import Button from "../../../components/Form/Button";
 import RegisterObjectUpload from "../RegisterObjectUpload";
 import { registerObject } from "../../../api/api";
-import { useContext } from "react";
+import { getCategories } from "../../../api/api";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 
 function RegisterObjectForm() {
+  const [options, setOptions] = useState([]);
   const { userData } = useContext(UserContext);
+
+  useEffect(() => {
+    async function getCategoriesApi() {
+      try {
+        const carregarDados = await getCategories();
+
+        setOptions(carregarDados);
+        console.log(options);
+      } catch (error) {
+        console.error("Erro ao buscar categorias:", error);
+      }
+    }
+    getCategoriesApi();
+  }, []);
 
   async function handleSubmit(e) {
     // 1. Evita que a página recarregue (comportamento padrão do HTML)
@@ -31,14 +47,17 @@ function RegisterObjectForm() {
     console.log(formData.get("image"));
     //para ver os dados no console:
     console.log(Object.fromEntries(formData.entries()));
+
     try {
       // 3. Envia o formData (que já contém text e arquivo) para sua API
       const response = await registerObject(formData);
       console.log("Sucesso:", response);
       //console.log("Erro", response.error);
+      e.target.reset();
     } catch (error) {
       console.log(error.response);
       console.error("Erro ao enviar:", error);
+      e.target.reset();
     }
   }
 
@@ -46,11 +65,11 @@ function RegisterObjectForm() {
     <form
       onSubmit={handleSubmit} // Apenas a referência, sem os parênteses
       encType="multipart/form-data" // 'T' maiúsculo para JSX
-      className={styles.registerObjectFormContainer}
+      className={`${styles.registerObjectFormContainer}`}
     >
-      <div className="dataContainer">
+      <div className={styles.dataContainer}>
         <Input name="nameObject" placeholder="Nome" type="text" />
-        <Select name="category" className="w-100 mb-1" />
+        <Select name="category" className="w-100 mb-1" options={options} />
         <TextArea
           name="description"
           className="w-100"
@@ -60,7 +79,7 @@ function RegisterObjectForm() {
           Registrar Objeto
         </Button>
       </div>
-      <div className="uploadContainer">
+      <div className={styles.uploadContainer}>
         {/* Garanta que dentro desse componente exista um <input type="file" name="image" /> */}
         <RegisterObjectUpload name="image" />
       </div>

@@ -1,6 +1,6 @@
 .registerObjectFormContainer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: row;
     gap: 24px;
 }
 
@@ -8,8 +8,24 @@
     gap: 8px;
 }
 
+.dataContainer {
+    flex-grow: 1;
+}
+
+.uploadContainer {
+    flex-grow: 1;
+}
+
 @media(max-width: 960px) {
     .registerObjectFormContainer {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+
+    .dataContainer {
+        order: 2;
+    }
+
+    .uploadContainer {
+        order: 1;
     }
 }

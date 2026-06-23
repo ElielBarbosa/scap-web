@@ -38,3 +38,13 @@ export async function registerObject(formData) {
     console.log(error.response.data);
   }
 }
+export async function getCategories() {
+  try {
+    const response = await api.get("/category");
+    console.log("Resposta da API:", response.data);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}

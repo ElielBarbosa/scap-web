@@ -34,6 +34,7 @@ function Input({
           onChange={onChange}
           value={value}
           {...rest}
+          required
         />
         {type === "password" && (
           <img
@@ -42,6 +43,7 @@ function Input({
             alt=""
             srcset=""
             className={styles.iconEye}
+            required
           />
         )}
       </div>
