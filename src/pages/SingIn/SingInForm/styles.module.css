@@ -1,9 +1,12 @@
+.signInFormContainer {
+    max-width: 415px;
+}
+
 .loginForm {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     position: relative;
-    gap: 16px;
     width: 100%;
 }
 
@@ -11,6 +14,16 @@
     display: flex;
     flex-direction: column;
 
+}
+
+.forgotPassword {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 14pt;
+    font-weight: 500;
+    color: var(--gray-4);
+    margin-bottom: 32px;
 }
 
 .signUpButtonWrapper>a>button {

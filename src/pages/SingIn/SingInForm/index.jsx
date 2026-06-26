@@ -20,7 +20,7 @@ import Divisor from "../Divisor";
 import { Link } from "react-router-dom";
 
 function SignInForm() {
-  const { handdleLogin } = useContext(UserContext);
+  const { handdleLogin, errorLogin } = useContext(UserContext);
 
   const schemaLogin = yup.object({
     email: yup
@@ -47,7 +47,12 @@ function SignInForm() {
   }
 
   return (
-    <>
+    <div className={`${styles.signInFormContainer} introAnimation`}>
+      <FormSectionHeader
+        title="Login"
+        error={errorLogin}
+        paragraph="Faça login para acessar a plataforma."
+      />
       <form onSubmit={handleSubmit(onSubmit)} className={styles.loginForm}>
         <div className={styles.inputContainer}>
           <Controller
@@ -79,6 +84,10 @@ function SignInForm() {
             )}
           />
         </div>
+        <Link to="/forgotPassword" className={styles.forgotPassword}>
+          Esqueceu a senha?
+        </Link>
+
         <Button variant="primary" type="submit">
           Entrar
         </Button>
@@ -89,7 +98,7 @@ function SignInForm() {
           <Button variant="secondary">Criar conta</Button>
         </Link>
       </div>
-    </>
+    </div>
   );
 }
 

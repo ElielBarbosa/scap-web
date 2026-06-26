@@ -24,11 +24,11 @@
 }
 
 .formHeaderParagraph {
-    font-size: 14px;
-    margin-bottom: 20px;
-    font-weight: 500;
-    line-height: 18pt;
-    color: var(--gray-2);
+    font-size: 32px;
+    padding: 40px 0px;
+    font-weight: 700;
+    line-height: 42px;
+    color: var(--black-ligth);
 }
 
 .logotype {
@@ -44,7 +44,7 @@
     }
 
     .logotype {
-        width: 200px;
+        width: 249px;
         height: auto;
         display: inline-block;
     }
@@ -67,11 +67,5 @@
         margin-bottom: 8px;
     }
 
-    .formHeaderParagraph {
-        font-size: 14px;
-        margin-bottom: 20px;
-        font-weight: 500;
-        line-height: 18pt;
-        color: var(--gray-2);
-    }
+
 }

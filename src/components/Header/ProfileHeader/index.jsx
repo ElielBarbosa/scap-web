@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import bellIcon from "../../../assets/icons/bell.svg";
 import idBedgeIcon from "../../../assets/icons/id-badge.svg";
 import logoutIcon from "../../../assets/icons/logout.svg";
+import chevronIcon from "../../../assets/icons/chevron-down.svg";
 
 function ProfileHeader({ username }) {
   const { userLogout, userData } = useContext(UserContext);
@@ -19,6 +20,7 @@ function ProfileHeader({ username }) {
   const closeMenu = () => {
     setIsOpen(false);
   };
+
   return (
     <span onClick={toggleMenu} className={`${styles.profile} toTopAnimation`}>
       <span className={`${styles.profileImage}`}>
@@ -32,6 +34,7 @@ function ProfileHeader({ username }) {
           <span className={styles.userRole}>User</span>
         )}
       </span>
+      <img src={chevronIcon} alt="" srcset="" />
 
       <div
         className={`${styles.menu} ${isOpen ? styles.active : ""}`}

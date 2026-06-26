@@ -1,7 +1,7 @@
 .signInContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    gap: 124px;
 }
 
 /* .signInContainer>div {

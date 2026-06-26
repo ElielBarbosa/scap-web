@@ -1,12 +1,14 @@
 .authPanelContainer {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     gap: 16px;
     background-image: url("../../assets/images/bg-card-1.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     width: 2fr;
+    padding: 32px;
     aspect-ratio: 18/22;
 
     border-radius: var(--br-1);
@@ -14,6 +16,26 @@
 
     animation: show-images 20s linear alternate infinite;
     transition: background-image 2s ease;
+}
+
+.authPanelMessage,
+.authPanelTitle {
+    text-align: center;
+}
+
+.authPanelTitle {
+    font-size: 28px;
+    line-height: 28pt;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--primary-dark);
+}
+
+.authPanelMessage {
+    font-size: 28px;
+    line-height: 28pt;
+    font-weight: 600;
+    color: var(--dark-light);
 }
 
 @media (max-width: 960px) {

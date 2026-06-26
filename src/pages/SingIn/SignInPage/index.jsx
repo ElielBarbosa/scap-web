@@ -9,8 +9,9 @@ import AuthPanel from "../../../components/AuthPanel";
 import { useNavigate } from "react-router-dom";
 
 function SignInPage() {
-  const { errorLogin, userLoged } = useContext(UserContext);
+  const { userLoged } = useContext(UserContext);
   const navigation = useNavigate();
+
   useEffect(() => {
     if (userLoged) {
       navigation("/");
@@ -19,15 +20,11 @@ function SignInPage() {
 
   return (
     <div className={`${styles.signInContainer} introAnimation container pt-5`}>
-      <AuthPanel />
-      <div>
-        <FormSectionHeader
-          title="Login"
-          error={errorLogin}
-          paragraph="Preencha os campos corretamentepara acessar a plataforma."
-        />
-        <SignInForm />
-      </div>
+      <AuthPanel
+        title="Olá, Seja bem-vindo"
+        message="SCAP — Sistema de Controle de Achados e Perdidos."
+      />
+      <SignInForm />
     </div>
   );
 }
