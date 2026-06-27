@@ -1,17 +1,27 @@
 .signUpContainer {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 64px;
+    gap: 124px;
+
 }
+
+.signUpFormContainer {
+    max-width: 415px;
+}
+
+
 
 /* .signUpContainer>div {
     width: 420px;
-} */
+    } */
 
 @media (max-width: 960px) {
     .signUpContainer {
         display: grid;
         grid-template-columns: 1fr;
         gap: 0px;
+        justify-self: center;
+
     }
+
 }

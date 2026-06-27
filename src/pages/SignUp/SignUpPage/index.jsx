@@ -1,10 +1,10 @@
 import { useContext } from "react";
+import { UserContext } from "../../../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 import FormSectionHeader from "../../../components/Form/FormSectionHeader";
 import styles from "./styles.module.css";
 import SignUpForm from "../SignUpForm";
-import { UserContext } from "../../../contexts/UserContext";
 import AuthPanel from "../../../components/AuthPanel";
-import { useNavigate } from "react-router-dom";
 
 function SignUpPage() {
   const { errorRegister, userLoged } = useContext(UserContext);
@@ -17,12 +17,14 @@ function SignUpPage() {
       <div
         className={`${styles.signUpContainer} container introAnimation pt-5`}
       >
-        <AuthPanel />
-        <div>
+        <AuthPanel
+          title="Olá, Seja bem-vindo"
+          message="SCAP — Sistema de Controle de Achados e Perdidos."
+        />
+        <div className={`${styles.signUpFormContainer}`}>
           <FormSectionHeader
-            title="Cadastro"
             error={errorRegister}
-            paragraph="Por favor preencha os campos corretamente para criar uma nova conta"
+            paragraph="Preencha os campos para cria sua conta."
           />
           <SignUpForm />
         </div>

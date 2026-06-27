@@ -3,7 +3,7 @@ import Input from "../../../components/Form/Input";
 import iconPassword from "../../../assets/icons/lock.svg";
 import iconEmail from "../../../assets/icons/mail.svg";
 import iconUser from "../../../assets/icons/user.svg";
-import iconId from "../../../assets/icons/id-badge.svg";
+import iconId from "../../../assets/icons/id-badge-2.svg";
 //import useForm from "../../../hooks/UseForm";
 import styles from "./styles.module.css";
 //import { useContext } from "react";
@@ -79,7 +79,7 @@ function SignUpForm() {
           action=""
           method="post"
           onSubmit={handleSubmit(onSubmit)}
-          className={`${styles.registerFormContainer}`}
+          className={`${styles.signUpFormContainer}`}
         >
           <div className={styles.inputContainerRegister}>
             <Controller
