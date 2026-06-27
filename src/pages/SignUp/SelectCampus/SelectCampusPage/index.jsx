@@ -22,11 +22,7 @@ function SelectCampusPage() {
       <div
         className={`${styles.selectCampusContainer} container introAnimation py-5`}
       >
-        <FormSectionHeader
-          title="Selecione o campus"
-          subtitle="selecione seu campus IFS"
-          paragraph=""
-        />
+        <FormSectionHeader paragraph="Selecione o seu campus IFS." />
         <SelectCampusList></SelectCampusList>
       </div>
       {mostrar && <SelectCampusModal />}

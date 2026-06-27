@@ -1,7 +1,7 @@
 import SelectCampusCard from "../SelectCampusCard";
 import styles from "./styles.module.css";
 
-import checkIcon from "../../../../assets/icons/check.svg";
+import mapPinIcon from "../../../../assets/icons/map-pin.svg";
 import { useContext } from "react";
 import { UserContext } from "../../../../contexts/UserContext";
 
@@ -11,10 +11,16 @@ function SelectCampusForm() {
   return (
     <div className={`${styles.campusModalContainer} opacityAnimation`}>
       <div className={`${styles.modalCampus} scaleAnimation`}>
-        <img src={checkIcon} alt="Check Icon" className={styles.checkIcon} />
-        <h5>Confirmação de Seleção</h5>
+        <img
+          src={mapPinIcon}
+          alt="Map Pin Icon"
+          className={styles.mapPinIcon}
+        />
+        <h5 className={`${styles.modalCampusTitle}`}>Confirmação de Seleção</h5>
         <p className={styles.modalCampusMessage}>
-          Você selecionou o campus IFS - Tobias Barreto, deseja confirmar?
+          Esta ação removerá o objeto do sistema e poderá impactar solicitações
+          associadas a ele. O histórico relacionado poderá não ficar mais
+          disponível para consulta.
         </p>
         <div className={`${styles.modalButtonContainer} mt-2`}>
           <button

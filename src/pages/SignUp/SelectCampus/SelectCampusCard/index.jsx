@@ -18,12 +18,12 @@ function SelectCampusCard({ id, campusName, city, address }) {
       <div className={styles.imgCampus}></div>
       <div className={styles.dataCampusWrapper} campusId={id}>
         <h5 className={styles.campusCardTitle}>{campusName}</h5>
-        <span className={styles.enderecoCampus}>{address}</span>
-        <span className={styles.enderecoCampus}>{city}</span>
-        <button onClick={selectCampus} className={styles.campusCardButton}>
-          Selecionar
-        </button>
+        <span className={styles.cityCampus}>IFS Campus {city}</span>
+        <span className={styles.addressCampus}>{address}</span>
       </div>
+      <button onClick={selectCampus} className={styles.campusCardButton}>
+        Selecionar
+      </button>
     </li>
   );
 }

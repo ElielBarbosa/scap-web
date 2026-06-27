@@ -17,11 +17,9 @@
 
 @media (max-width: 960px) {
     .signUpContainer {
-        display: grid;
         grid-template-columns: 1fr;
         gap: 0px;
-        justify-self: center;
-
+        justify-items: center;
     }
 
 }
